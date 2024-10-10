@@ -2,115 +2,94 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import norm, expon
-from scipy.integrate import cumulative_trapezoid
 import sqlite3
 
 # Extraer los datos a usar.
 conn = sqlite3.connect("proyecto.db")
 data = pd.read_sql_query("SELECT * FROM test_data", conn)
 
-# 1. Visualizar histograma de los datos
+
+# 1. Visualizar histograma de variable_1
+def visualizar_histograma_var1():
+    plt.figure(figsize=(6, 5))
+
+    # Histograma de variable_1
+    plt.hist(data["variable_1"], bins=20, density=True, alpha=0.6, color="blue")
+    plt.title("Histograma de variable_1")
+    plt.xlabel("Variable_1")
+    plt.ylabel("Densidad")
+
+    # Guardar la imagen del histograma de variable_1
+    plt.savefig("histograma_variable_1.png")
+    plt.show()
 
 
-# 2. Crear distribuciones
+# 2. Visualizar histograma de variable_2
+def visualizar_histograma_var2():
+    plt.figure(figsize=(6, 5))
 
-#   Encontrar modelos de variable_1
+    # Histograma de variable_2
+    plt.hist(data["variable_2"], bins=20, density=True, alpha=0.6, color="green")
+    plt.title("Histograma de variable_2")
+    plt.xlabel("Variable_2")
+    plt.ylabel("Densidad")
+
+    # Guardar la imagen del histograma de variable_2
+    plt.savefig("histograma_variable_2.png")
+    plt.show()
+
+
+# 3. Ajuste de modelos para variable_1 (distribución normal) con visualización
 def modelosVar1():
-    # Se obtienen los datos de la variable_1
     variable_1 = data["variable_1"]
     params = norm.fit(variable_1)
     x = np.linspace(variable_1.min(), variable_1.max(), 200)
 
-    # Se obtienen los ajustes
+    # Se obtiene el ajuste
     pdf = norm.pdf(x, *params)
-    cdf = norm.cdf(x, *params)
 
-    # Se arma una figura con 2 gráficos
+    # Gráfico del histograma y el ajuste PDF
     plt.figure(figsize=(10, 5))
+    plt.hist(
+        variable_1, bins=20, density=True, alpha=0.6, color="blue", label="Histograma"
+    )
+    plt.plot(x, pdf, "r-", lw=2, label="PDF Ajustado")
+    plt.title("Histograma y ajuste de la distribución normal para variable_1")
+    plt.xlabel("Variable_1")
+    plt.ylabel("Densidad")
+    plt.legend()
 
-    # Mostrar PDF
-    plt.subplot(1, 2, 1)
-    plt.plot(x, pdf, 'r-', lw=2, label='PDF')
-    plt.title('Función de densidad de probabilidad')
-    plt.xlabel('Variable_1')
-    plt.ylabel('Probabilidad')
-
-    # Mostrar CDF
-    plt.subplot(1, 2, 2)
-    plt.plot(x, cdf, 'b-', lw=2, label='CDF')
-    plt.title('Función de probabilidad acumulativa')
-    plt.xlabel('Variable_1')
-    plt.ylabel('Probabilidad acumulativa')
-
-    plt.tight_layout()
+    # Guardar la imagen con el ajuste para variable_1
+    plt.savefig("ajuste_variable_1.png")
     plt.show()
 
 
-#   Encontrar modelos de variable_2
+# 4. Ajuste de modelos para variable_2 (distribución exponencial) con visualización
 def modelosVar2():
-    max_x = 20
-
-    # Se obtienen los datos de la variable_2
     variable_2 = data["variable_2"]
     params = expon.fit(variable_2)
-    x = np.linspace(variable_2.min(), max_x, 200)
-
-    # Se obtienen los ajustes
+    x = np.linspace(variable_2.min(), variable_2.max(), 200)
+    # Se obtiene el ajuste
     pdf = expon.pdf(x, *params)
-    cdf = expon.cdf(x, *params)
+    # Gráfico del histograma y el ajuste PDF
+    plt.figure(figsize=(10, 5))
+    plt.hist(
+        variable_2, bins=20, density=True, alpha=0.6, color="green", label="Histograma"
+    )
+    plt.plot(x, pdf, "r-", lw=2, label="PDF Ajustado")
+    plt.title("Histograma y ajuste de la distribución exponencial para variable_2")
+    plt.xlabel("Variable_2")
+    plt.ylabel("Densidad")
+    plt.legend()
 
-    # Crear una figura con una cuadrícula de 2x2
-    fig, axes = plt.subplots(2, 2, figsize=(12, 10))
-
-    # Primer gráfico: PDF
-    axes[0, 0].plot(x, pdf, 'r-', lw=2, label='PDF')
-    axes[0, 0].set_title('Función de densidad de probabilidad')
-    axes[0, 0].set_xlabel('Variable_2')
-    axes[0, 0].set_ylabel('Densidad de Probabilidad')
-
-    # Segundo gráfico: CDF
-    axes[0, 1].plot(x, cdf, 'b-', lw=2, label='CDF')
-    axes[0, 1].set_title('Función de probabilidad acumulativa')
-    axes[0, 1].set_xlabel('Variable_2')
-    axes[0, 1].set_ylabel('Probabilidad acumulativa')
-
-    # Redefinir límites de x para fórmula
-    # Esto evita problemas donde la ecuación se hace muy grande.
-    x = np.linspace(1.01, 20, 500)
-
-    # Tercer gráfico: PDF con fórmula
-    axes[1, 0].plot(x, pdfEcuacion(x), 'b-', lw=2, label='PDF')
-    axes[1, 0].set_xlim(left=1.077)
-    axes[1, 0].set_title('Función de probabilidad acumulativa con fórmula')
-    axes[1, 0].set_xlabel('Variable_2')
-    axes[1, 0].set_ylabel('Densidad de Probabilidad')
-
-    # Cuarto gráfico: CDF con fórmula
-    axes[1, 1].plot(x, cdfEcuacion(x), 'b-', lw=2, label='CDF')
-    axes[1, 1].set_title('Función de probabilidad acumulativa con fórmula')
-    axes[1, 1].set_xlabel('Variable_2')
-    axes[1, 1].set_ylabel('Probabilidad acumulativa')
-
-    plt.tight_layout()
+    # Guardar la imagen con el ajuste para variable_2
+    plt.savefig("ajuste_variable_2.png")
     plt.show()
 
 
-def pdfEcuacion(x):
-    mu = -0.000339176289247862
-    std2 = 1.6719790870752245
-
-    return 1/(2*np.sqrt(x-1)*np.sqrt(2*np.pi*std2)) \
-        * (np.exp(-(np.power(np.sqrt(x-1)-mu, 2))/(2*std2))
-           + np.exp(-(np.power(-np.sqrt(x-1)-mu, 2))/(2*std2)))
-
-
-def cdfEcuacion(x):
-    return np.concatenate(([0], cumulative_trapezoid(pdfEcuacion(x), x=x)))
-
-
-# 3. Visualizar los momentos
-
-
+# 5. Ejecutar todo el programa
 if __name__ == "__main__":
-    modelosVar1()
-    modelosVar2()
+    visualizar_histograma_var1()  # Generar y guardar histograma de variable_1
+    visualizar_histograma_var2()  # Generar y guardar histograma de variable_2
+    modelosVar1()  # Generar y guardar ajuste sobre histograma de variable_1
+    modelosVar2()  # Generar y guardar ajuste sobre histograma de variable_2
