@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import norm, expon
-from scipy.integrate import quad
+from scipy.integrate import cumulative_trapezoid
 import sqlite3
 
 # Extraer los datos a usar.
@@ -19,7 +19,6 @@ def modelosVar1():
     # Se obtienen los datos de la variable_1
     variable_1 = data["variable_1"]
     params = norm.fit(variable_1)
-    print(f"mu = {params[0]}, std = {params[1]}")
     x = np.linspace(variable_1.min(), variable_1.max(), 200)
 
     # Se obtienen los ajustes
@@ -77,7 +76,7 @@ def modelosVar2():
 
     # Redefinir límites de x para fórmula
     # Esto evita problemas donde la ecuación se hace muy grande.
-    x = np.linspace(1.05, 20, 200)
+    x = np.linspace(1.01, 20, 500)
 
     # Tercer gráfico: PDF con fórmula
     axes[1, 0].plot(x, pdfEcuacion(x), 'b-', lw=2, label='PDF')
@@ -101,16 +100,17 @@ def pdfEcuacion(x):
     std2 = 1.6719790870752245
 
     return 1/(2*np.sqrt(x-1)*np.sqrt(2*np.pi*std2)) \
-        * np.exp(-(np.power(np.sqrt(x-1)-mu, 2))/(2*std2))
+        * (np.exp(-(np.power(np.sqrt(x-1)-mu, 2))/(2*std2))
+           + np.exp(-(np.power(-np.sqrt(x-1)-mu, 2))/(2*std2)))
 
 
 def cdfEcuacion(x):
-    return np.cumsum(pdfEcuacion(x))
+    return np.concatenate(([0], cumulative_trapezoid(pdfEcuacion(x), x=x)))
 
 
 # 3. Visualizar los momentos
 
 
 if __name__ == "__main__":
-    # modelosVar1()
+    modelosVar1()
     modelosVar2()
