@@ -27,7 +27,6 @@ class TestData(Base):
     timestamp = Column(DateTime)
     variable_1 = Column(Integer)
     variable_2 = Column(Float)
-    variable_3 = Column(String)
 
 
 # Crear la conexión a la base de datos SQLite3 o PostgreSQL

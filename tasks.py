@@ -45,7 +45,6 @@ def test_task(url, group):
                 timestamp=timestamp,
                 variable_1=data["variable_1"][sample],
                 variable_2=data["variable_2"][sample],
-                variable_3=data["variable_3"][sample],
             )
             session.add(record)
             session.commit()

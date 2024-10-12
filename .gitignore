@@ -1,0 +1,4 @@
+env/
+__pycache__/
+celerybeat-schedule
+proyecto.cfg
