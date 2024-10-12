@@ -7,6 +7,7 @@ nav:
   - Modelos: modelos.md
   - Instrucciones: instrucciones.md
   - Atributos: atributos.md
+  - Avance: avance.md
 
 theme: 
   name: material

@@ -14,7 +14,7 @@ def visualizar_histograma_var1():
     plt.figure(figsize=(6, 5))
 
     # Histograma de variable_1
-    plt.hist(data["variable_1"], bins=20, density=True, alpha=0.6, color="blue")
+    plt.hist(data["variable_1"], bins=50, density=True, alpha=0.6, color="blue")
     plt.title("Histograma de variable_1")
     plt.xlabel("Variable_1")
     plt.ylabel("Densidad")
@@ -29,7 +29,7 @@ def visualizar_histograma_var2():
     plt.figure(figsize=(6, 5))
 
     # Histograma de variable_2
-    plt.hist(data["variable_2"], bins=20, density=True, alpha=0.6, color="green")
+    plt.hist(data["variable_2"], bins=50, density=True, alpha=0.6, color="green")
     plt.title("Histograma de variable_2")
     plt.xlabel("Variable_2")
     plt.ylabel("Densidad")
