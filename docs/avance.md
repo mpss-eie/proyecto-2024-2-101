@@ -13,8 +13,8 @@ Para la recoleccion de datos se estuvo realizando una solicitud a la API para ob
 Para obtener una presentacion visual de la manera que estan distribuidos los datos se crearon los histogramas de las variables.
 
 #### Variable_1
-![Histograma de variable_1](img/histograma_variable_1.png)
+![Histograma de variable_1](img/histogramaVariable_1.png)
 #### Variable_2
-![Histograma de variable_2](img/histograma_variable_2.png)
+![Histograma de variable_2](img/histogramaVariable_2.png)
 
-Se aprecia que en `variable_1` posee una distribucion normal o gaussiana, ya que se aprecia la famosa forma de campana y es simetrica, mietras que `variable_2` tiene una distrubucion exponencial debido a que se pasa tener una densidad grande a una pequeña de una forma muy rapida.
+Se aprecia que en `variable_1` posee una distribucion normal o gaussiana, ya que se aprecia la famosa forma de campana y es simetrica, mietras que `variable_2` tiene una distrubucion exponencial debido a que se pasa tener una densidad grande a una pequeña de una forma muy rapida. 
