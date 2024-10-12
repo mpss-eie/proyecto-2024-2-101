@@ -14,13 +14,18 @@ def visualizar_histograma_var1():
     plt.figure(figsize=(6, 5))
 
     # Histograma de variable_1
-    plt.hist(data["variable_1"], bins=50, density=True, alpha=0.6, color="blue")
+    plt.hist(
+        data["variable_1"],
+        bins=50,
+        density=True,
+        alpha=0.6,
+        color="blue")
     plt.title("Histograma de variable_1")
     plt.xlabel("Variable_1")
     plt.ylabel("Densidad")
 
     # Guardar la imagen del histograma de variable_1
-    #plt.savefig("histograma_variable_1.png")
+    # plt.savefig("histograma_variable_1.png")
     plt.show()
 
 
@@ -29,13 +34,18 @@ def visualizar_histograma_var2():
     plt.figure(figsize=(6, 5))
 
     # Histograma de variable_2
-    plt.hist(data["variable_2"], bins=50, density=True, alpha=0.6, color="green")
+    plt.hist(
+        data["variable_2"],
+        bins=50,
+        density=True,
+        alpha=0.6,
+        color="green")
     plt.title("Histograma de variable_2")
     plt.xlabel("Variable_2")
     plt.ylabel("Densidad")
 
     # Guardar la imagen del histograma de variable_2
-    #plt.savefig("histograma_variable_2.png")
+    # plt.savefig("histograma_variable_2.png")
     plt.show()
 
 
@@ -49,7 +59,14 @@ def modelosVar1():
     pdf = norm.pdf(x, *params)
     # Gráfico del histograma y el ajuste PDF
     plt.figure(figsize=(10, 5))
-    plt.hist(variable_1, bins=50, density=True, alpha=0.6, color="blue", label="Histograma", edgecolor = "black")
+    plt.hist(
+        variable_1,
+        bins=50,
+        density=True,
+        alpha=0.6,
+        color="blue",
+        label="Histograma",
+        edgecolor="black")
     plt.plot(x, pdf, "r-", lw=2, label="PDF Ajustado")
     plt.title("Histograma y ajuste de la distribución normal para variable_1")
     plt.xlabel("Variable_1")
@@ -60,7 +77,8 @@ def modelosVar1():
     plt.show()
 
 
-# 4. Ajuste de modelos para variable_2 (distribución exponencial) con visualización
+# 4. Ajuste de modelos para variable_2 (distribución exponencial) con
+# visualización
 def modelosVar2():
     variable_2 = data["variable_2"]
     params = expon.fit(variable_2)
@@ -68,12 +86,20 @@ def modelosVar2():
     # Se obtiene el ajuste
     pdf = expon.pdf(x, *params)
     # Gráfico del histograma y el ajuste PDF
-    bins = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 30] # Definir los límites de los bins
+    # Definir los límites de los bins
+    bins = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 30]
     plt.figure(figsize=(10, 5))
-    plt.hist(variable_2, bins=bins, density=True, alpha=0.6, color="green", label="Histograma", edgecolor="black")
+    plt.hist(
+        variable_2,
+        bins=bins,
+        density=True,
+        alpha=0.6,
+        color="green",
+        label="Histograma",
+        edgecolor="black")
     plt.plot(x, pdf, "r-", lw=2, label="PDF Ajustado")
     plt.title("Histograma y ajuste de la distribución exponencial para variable_2")
-    plt.xlim(0,40)
+    plt.xlim(0, 40)
     plt.xlabel("Variable_2")
     plt.ylabel("Densidad")
     plt.legend()
