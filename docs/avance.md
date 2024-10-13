@@ -8,13 +8,29 @@ Para la recoleccion de datos se estuvo realizando una solicitud a la API para ob
 
 ## Análisis exploratorio de los datos
 
+Se recopilaron dos conjuntos de datos `variable_1` y `variable_2`, con distribuciones desconocidas y con una transformación indicada como: `variable_2` = (`variable_1`)^2 + 1.
+
 ###  Gráficas descriptivas de `variable_1` y `variable_2`
 
 Para obtener una presentacion visual de la manera que estan distribuidos los datos se crearon los histogramas de las variables.
 
-#### Variable_1
+##### Variable_1
 ![Histograma de variable_1](img/histogramaVariable_1.png)
-#### Variable_2
+##### Variable_2
 ![Histograma de variable_2](img/histogramaVariable_2.png)
 
-Se aprecia que en `variable_1` posee una distribucion normal o gaussiana, ya que se aprecia la famosa forma de campana y es simetrica, mietras que `variable_2` tiene una distrubucion exponencial debido a que se pasa tener una densidad grande a una pequeña de una forma muy rapida. 
+Se aprecia que en `variable_1` posee una distribucion normal o gaussiana, ya que se aprecia la famosa forma de campana y es simetrica, mientras que `variable_2` tiene una distribución aparentemente exponencial debido a que se pasa tener una densidad grande a una pequeña de una forma muy rapida.
+
+### Modelos de probabilidad para los datos
+
+Se obtuvieron los modelos de ambas variables, para esto se calculan la función de densidad de probabilidad (PDF) y la función de probabilidad acumulativa (CDF) de ambas.
+
+##### Variable_1
+![PDF y CDF Variable_1](img/ajuste_variable_1.png)
+##### Variable_2
+![PDF y CDF Variable_2](img/comparativa_ajustes.png)
+
+Las PDF y CDF del modelo para la `variable_1` y el primer set de la `variable_2` se calcularon por medio de módulos de python con la librería `scipy.stats`. Se calcularon según los modelos identificados en la sección anterior (normal y exponencial). Para la `variable_1` se nota que el modelo se ajusta relativamente bien en forma, pues la curva sigue el comportamiento del histograma y se muestra como el CDF aumenta drásticamente cerca de los puntos más probables y se estabiliza en 1. Para la `variable_2` se empleó primeramente el modelo exponencial, generando las figuras superiores que presentan un ajuste ligeramente más lento en decrecimiento al del histograma pero cumplen en la mayoría de aspectos. Por otro lado, se muestra otra curva para la misma variable, la cual se obtiene de calcular la PDF de la `variable_2` por medio de la transformación citada y asumiendo que la `variable_1` proviene de una distribución normal. Se nota que esta tiene un mejor ajuste a la exponencial, por lo que es mas cercana al ajuste real
+
+
+### Momentos de los modelos
