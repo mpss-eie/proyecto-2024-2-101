@@ -133,5 +133,5 @@ Evaluando las raíces en la ecuación, se tiene que:
 $$f_{X_2}(x_2)=\frac{1}{\sqrt{2\pi \sigma^2}} \cdot \frac{e^{-\frac{(\sqrt{x_2-1} - \mu)^2}{2\sigma^2}} + e^{-\frac{(-\sqrt{x_2-1} - \mu)^2}{2\sigma^2}}}{2\sqrt{x_2-1}},\quad 1 < x_2 < \infty$$
 
 
-Se comprueba la forma de la PDF al igual que la convergencia de la CDF al mostrar ambas curvas en geogebra, se tiene la memoria de la simulación en un [archivo geogebra](misc/geogebra-export.ggb) el cual se puede abrir en la [calculadora geogebra](https://www.geogebra.org/calculator) para utilizar la simulación.
+Se evalúan la desviación y media obtenidas del ajuste normal realizado en la `variable_1`. Se puede comprobar la forma de la PDF al igual que la convergencia de la CDF al mostrar ambas curvas en geogebra, se tiene la memoria de la simulación en un [archivo geogebra](misc/geogebra-export.ggb) el cual se puede abrir en la [calculadora geogebra](https://www.geogebra.org/calculator) para utilizar la simulación.
 ![PDF y CDF Variable_2](img/geogebra-export.png)
