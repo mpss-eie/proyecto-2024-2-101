@@ -23,7 +23,7 @@ def visualizar_histograma_var1():
     Salida:
     -------
     Muestra un gráfico del histograma de 'variable_1' y guarda la imagen como
-    "src/img/histograma_variable_1_con_momentos.png".
+    "docs/img/histograma_variable_1_con_momentos.png".
     """
 
     # Obtener los datos de variable_1
@@ -73,7 +73,7 @@ def visualizar_histograma_var1():
     plt.legend()
 
     # Guardar la imagen generada
-    plt.savefig("src/img/histograma_variable_1_con_momentos.png")
+    plt.savefig("docs/img/histograma_variable_1_con_momentos.png")
 
     # Mostrar el gráfico
     plt.show()
@@ -94,7 +94,7 @@ def visualizar_histograma_var2():
     Salida:
     -------
     Muestra un gráfico del histograma de 'variable_2' y guarda la imagen como
-    "src/img/histograma_variable_2_con_momentos.png".
+    "docs/img/histograma_variable_2_con_momentos.png".
     """
 
     # Obtener los datos de variable_2
@@ -150,7 +150,7 @@ def visualizar_histograma_var2():
     plt.legend()
 
     # Guardar la imagen generada
-    plt.savefig("src/img/histograma_variable_2_con_momentos.png")
+    plt.savefig("docs/img/histograma_variable_2_con_momentos.png")
 
     # Mostrar el gráfico
     plt.show()
@@ -228,7 +228,7 @@ def modelosVar1():
     plt.legend()
 
     # Guardar la imagen con el ajuste para variable_1
-    plt.savefig("src/img/ajuste_variable_1_con_momentos.png")
+    plt.savefig("docs/img/ajuste_variable_1_con_momentos.png")
     plt.show()
 
 
@@ -308,7 +308,7 @@ def modelosVar2():
     plt.legend()
 
     # Guardar la imagen con el ajuste para variable_2
-    plt.savefig("src/img/ajuste_variable_2_con_momentos.png")
+    plt.savefig("docs/img/ajuste_variable_2_con_momentos.png")
     plt.show()
 
 
