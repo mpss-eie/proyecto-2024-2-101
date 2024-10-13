@@ -7,6 +7,7 @@ nav:
   - Modelos: modelos.md
   - Instrucciones: instrucciones.md
   - Atributos: atributos.md
+  - Avance: avance.md
 
 theme: 
   name: material
@@ -41,3 +42,9 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.arithmatex:
+      generic: true
+  
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
