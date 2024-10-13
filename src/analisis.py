@@ -126,20 +126,23 @@ def comparacionFormula():
     axes[0, 1].set_ylabel('Probabilidad acumulativa')
 
     # Redefinir límites de x para fórmula
-    # Esto evita problemas donde la ecuación se hace muy grande.
-    x = np.linspace(1.29, 20, 500)
+    # Esto evita problemas donde la ecuación
+    # se hace muy grande por indefinición.
+    xFormula = np.linspace(1.009, 50, 500)
 
     # Tercer gráfico: PDF con fórmula
-    axes[1, 0].plot(x, pdfEcuacion(x), 'b-', lw=2, label='PDF')
+    axes[1, 0].plot(xFormula, pdfEcuacion(xFormula), 'b-', lw=2, label='PDF')
     axes[1, 0].hist(variable_2, bins=bins, density=True, alpha=0.6,
                     color="green", label="Histograma", edgecolor="black")
     axes[1, 0].set_xlim([0, 20])
-    axes[1, 0].set_title('Función de probabilidad acumulativa con fórmula')
+    axes[1, 0].set_ylim([0, 1])
+    axes[1, 0].set_title('Función de densidad de probabilidad con fórmula')
     axes[1, 0].set_xlabel('Variable_2')
     axes[1, 0].set_ylabel('Densidad de Probabilidad')
 
     # Cuarto gráfico: CDF con fórmula
-    axes[1, 1].plot(x, cdfEcuacion(x), 'b-', lw=2, label='CDF')
+    axes[1, 1].plot(xFormula, cdfEcuacion(xFormula), 'b-', lw=2, label='CDF')
+    axes[1, 1].set_xlim([0, 20])
     axes[1, 1].set_title('Función de probabilidad acumulativa con fórmula')
     axes[1, 1].set_xlabel('Variable_2')
     axes[1, 1].set_ylabel('Probabilidad acumulativa')
@@ -159,7 +162,7 @@ def pdfEcuacion(x):
 
 
 def cdfEcuacion(x):
-    return np.concatenate(([0], cumulative_trapezoid(pdfEcuacion(x), x=x)))
+    return cumulative_trapezoid(pdfEcuacion(x), x=x, initial=0)
 
 
 # 5. Ejecutar todo el programa
