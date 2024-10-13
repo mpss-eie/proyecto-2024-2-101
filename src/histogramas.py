@@ -14,6 +14,18 @@ conn.close()
 
 
 def histograma_variable_1(df):
+    """
+    Genera y guarda un histograma para la columna 'variable_1' del DataFrame.
+
+    El histograma muestra la densidad de los valores presentes en 'variable_1',
+    utilizando 50 bins para la distribución de los datos.
+
+    Argumentos:
+    df -- pandas DataFrame que contiene la columna 'variable_1'
+
+    Guardado:
+    Se guarda en un archivo PNG en la ruta 'src/img/histograma_variable_1.png'.
+    """
     # Crear el histograma
     plt.figure()
     plt.hist(df['variable_1'], density=True, bins=50, edgecolor='black')
@@ -26,6 +38,20 @@ def histograma_variable_1(df):
 
 
 def histograma_variable_2(df):
+    """
+    Genera y guarda un histograma para la columna 'variable_2' del DataFrame.
+
+    El histograma utiliza límites personalizados para los bins definidos
+    por el usuario para mostrar mejor la distribución de los valores.
+    La columna 'variable_2' es representada en un gráfico con densidad.
+
+    Argumentos:
+    df -- pandas DataFrame que contiene la columna 'variable_2'
+
+    Guardado:
+    Se guarda en un archivo PNG en la ruta 'src/img/histograma_variable_2.png'.
+    """
+
     # Crear el histograma
     plt.figure()
 
