@@ -210,4 +210,3 @@ def cdfEcuacion(x):
     :rtype: numpy.ndarray
     """
     return cumulative_trapezoid(pdfEcuacion(x), x=x, initial=0)
-
