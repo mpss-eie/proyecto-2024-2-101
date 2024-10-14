@@ -158,7 +158,7 @@ def visualizar_histograma_var2():
 
 # 3. Ajuste de modelos para variable_1 (distribución normal)
 # con marcas de momentos.
-def modelosVar1():
+def modelosMomentosVar1():
     """
     Ajusta un modelo de distribución normal a los datos de variable_1
     y visualiza un histograma junto con la función de densidad
@@ -234,7 +234,7 @@ def modelosVar1():
 
 # 4. Ajuste de modelos para variable_2 (distribución exponencial)
 # con marcas de momentos.
-def modelosVar2():
+def modelosMomentosVar2():
     """
     Ajusta un modelo de distribución exponencial a los datos de variable_2
     y visualiza un histograma junto con la función de densidad
@@ -373,31 +373,3 @@ def calcular_momentos_var2(variable, nombre_variable):
     print(f"Desviación estándar: {desviacion_estandar}")
     print(f"Asimetría (Skewness): {inclinacion}")
     print(f"Curtosis: {curtosis}\n")
-
-
-# 7. Ejecutar todo el programa
-if __name__ == "__main__":
-    """
-    Este bloque se ejecuta si el script se ejecuta como un programa principal.
-    Se generan histogramas y se calculan momentos estadísticos para las
-    variables de interés. También se ajustan modelos a las distribuciones de
-    las variables.
-    """
-
-    # Generar y guardar el histograma para la variable_1
-    visualizar_histograma_var1()
-
-    # Generar y guardar el histograma para la variable_2
-    visualizar_histograma_var2()
-
-    # Calcular y mostrar momentos estadísticos para variable_1
-    calcular_momentos_var1(data["variable_1"], "Variable_1")
-
-    # Calcular y mostrar momentos estadísticos para variable_2
-    calcular_momentos_var2(data["variable_2"], "Variable_2")
-
-    # Ajustar modelos de distribución y generar gráficos para variable_1
-    modelosVar1()
-
-    # Ajustar modelos de distribución y generar gráficos para variable_2
-    modelosVar2()

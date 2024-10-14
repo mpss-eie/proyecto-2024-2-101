@@ -211,11 +211,3 @@ def cdfEcuacion(x):
     """
     return cumulative_trapezoid(pdfEcuacion(x), x=x, initial=0)
 
-
-# 5. Ejecutar todo el programa
-if __name__ == "__main__":
-    """ Bloque para ejecutar las 3 funciones y guardar las imágenes generadas.
-    """
-    modelosVar1()  # Generar y guardar ajuste sobre histograma de variable_1
-    modelosVar2()  # Generar y guardar ajuste sobre histograma de variable_2
-    comparacionFormula()  # Generar y guardar imagen comparativa entre ajustes
