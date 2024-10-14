@@ -70,8 +70,3 @@ def histograma_variable_2(df):
     # Guardar el gráfico como un archivo .png
     plt.savefig('src/img/histograma_variable_2.png')
     plt.show()
-
-
-if __name__ == "__main__":
-    histograma_variable_1(df)
-    histograma_variable_2(df)
