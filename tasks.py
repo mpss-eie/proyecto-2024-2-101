@@ -39,12 +39,18 @@ def test_task(url, group):
 
         timestamp = datetime.strptime(data["timestamp"], "%Y-%m-%d %H:%M:%S")
         sample_size = data["sample_size"]
-        for sample in range(sample_size):
+        sunlight = data["sunlight"]
+        data_values = data["data"]
+        # Calcular minutos desde las 00:00
+        minutes_since_midnight = timestamp.hour * 60 + timestamp.minute
+
+        for value in data_values:
             record = TestData(
                 group=group,
                 timestamp=timestamp,
-                variable_1=data["variable_1"][sample],
-                variable_2=data["variable_2"][sample],
+                sunlight=sunlight,    # Guardar si hay luz solar o no
+                value=value,           # Guardar el valor de cada muestra
+                minutes = minutes_since_midnight
             )
             session.add(record)
             session.commit()
