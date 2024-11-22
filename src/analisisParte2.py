@@ -86,10 +86,40 @@ def calcularPromedios(data):
 
 def calcularParametros(data):
     # Se obtuvo un mejor ajuste de tipo: Normal
+    # Se agrupan en minutos y se sacan sus valores
+    agrupados = data.groupby('minutes')['value']
 
-    pass
+    # Se calculan los parámetros y se crean como columnas
+    params = agrupados.apply(lambda x: norm.fit(x)).apply(pd.Series)
+    params.columns = ['loc', 'scale']
+
+    # Se agregan al dataFrame original
+    data = data.merge(params, left_on='minutes', right_index=True)
+
+    # Se reordena
+    data = data.sort_values(by=['minutes', 'id']).reset_index(drop=True)
+
+    # Se grafica la variación de los parámetros
+    eje_minutos = data[['minutes', 'loc', 'scale']].drop_duplicates()
+
+    plt.figure(figsize=(8, 5))
+    plt.plot(eje_minutos['minutes'], eje_minutos['loc'],
+             marker='o', linestyle='-', label='loc')
+    plt.plot(eje_minutos['minutes'], eje_minutos['scale'],
+             marker='o', linestyle='-', label='scale')
+    plt.title('Variación de parámetros loc y scale según el tiempo.')
+    plt.xlabel('Tiempo (Minutos)')
+    plt.ylabel('Valor de parámetros')
+    plt.grid()
+    plt.legend()
+    plt.show()
+
+    return data
 
 
 if __name__ == "__main__":
-    obtenerMejorFit(data)
-    # data = calcularPromedios(data)
+    # ES SUPER DEMANDANTE SOLO ACTIVAR SI ES NECESARIO w(ﾟДﾟ)ww(ﾟДﾟ)ww(ﾟДﾟ)w
+    # obtenerMejorFit(data)
+    data = calcularPromedios(data)
+    data = calcularParametros(data)
+    print(data)
