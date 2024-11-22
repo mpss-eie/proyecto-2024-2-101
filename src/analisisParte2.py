@@ -4,6 +4,7 @@ from fitter import Fitter
 import matplotlib.pyplot as plt
 from collections import Counter
 from scipy.stats import norm
+import numpy as np
 
 # Extraer los datos a usar.
 conn = sqlite3.connect("proyecto.db")
@@ -79,13 +80,13 @@ def calcularPromedios(data):
     plt.xlabel('Tiempo (Minutos)')
     plt.ylabel('Promedio')
     plt.grid()
+    plt.savefig('src/img/promedio_tiempo.png')
     plt.show()
 
     return data
 
 
 def calcularParametros(data):
-    # Se obtuvo un mejor ajuste de tipo: Normal
     # Se agrupan en minutos y se sacan sus valores
     agrupados = data.groupby('minutes')['value']
 
@@ -104,22 +105,60 @@ def calcularParametros(data):
 
     plt.figure(figsize=(8, 5))
     plt.plot(eje_minutos['minutes'], eje_minutos['loc'],
-             marker='o', linestyle='-', label='loc')
+             marker='o', linestyle='--', label='loc')
     plt.plot(eje_minutos['minutes'], eje_minutos['scale'],
-             marker='o', linestyle='-', label='scale')
+             marker='o', linestyle='--', label='scale')
+
+    # Se hacen las aproximaciones y se grafican
+
+    # Se usan los datos de día
+    datos_dia = data[data['sunlight'] == 1].drop_duplicates()
+    minDia = min(data[data['sunlight'] == 1]['minutes'])
+    maxDia = max(data[data['sunlight'] == 1]['minutes'])
+
+    # Se consiguen los polinomios
+    poly_loc = np.poly1d(np.polyfit(datos_dia['minutes'],
+                                    datos_dia['loc'], 2))
+
+    poly_scale = np.poly1d(np.polyfit(datos_dia['minutes'],
+                                      datos_dia['scale'], 2))
+
+    # Se muestran los polinomios y los límites del día
+    plt.plot(eje_minutos['minutes'], poly_loc(eje_minutos['minutes']),
+             label='Polinomio loc')
+
+    plt.plot(eje_minutos['minutes'], poly_scale(eje_minutos['minutes']),
+             label='Polinomio scale')
+
+    plt.plot((minDia, minDia), (-0.5, 7.2), scaley=False,
+             linestyle='dashed', color='gray')
+    plt.plot((maxDia, maxDia), (-0.5, 7.2), scaley=False,
+             linestyle='dashed', color='gray')
+
+    # Personalización
     plt.title('Variación de parámetros loc y scale según el tiempo.')
     plt.xlabel('Tiempo (Minutos)')
     plt.ylabel('Valor de parámetros')
     plt.grid()
     plt.legend()
+    plt.ylim(top=7.2, bottom=-0.5)
+    plt.savefig('src/img/parametros_tiempo.png')
     plt.show()
 
-    return data
+    # Se muestran los polinomios
+    coef_loc = poly_loc.coefficients
+    print(f"Poly_loc = {coef_loc[0]}x^2 + {coef_loc[1]}x "
+          f"+ {coef_loc[2]}")
+
+    coef_scale = poly_scale.coefficients
+    print(f"Poly_scale = {coef_scale[0]}x^2 + {coef_scale[1]}x "
+          f"+ {coef_scale[2]}")
+
+    return data, poly_loc, poly_scale
 
 
 if __name__ == "__main__":
     # ES SUPER DEMANDANTE SOLO ACTIVAR SI ES NECESARIO w(ﾟДﾟ)ww(ﾟДﾟ)ww(ﾟДﾟ)w
     # obtenerMejorFit(data)
     data = calcularPromedios(data)
-    data = calcularParametros(data)
-    print(data)
+    data, poly_loc, poly_scale = calcularParametros(data)
