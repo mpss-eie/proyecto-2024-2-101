@@ -23,6 +23,13 @@ distributions = [
 
 
 def obtenerMejorFit(data):
+    """Función para contar la cantidad de veces que 
+    una distribución es el mejor ajuste para los datos,
+    usando toda la muestra de datos.
+
+    :param data: Datos recolectados por 24 horas
+    :type data: DataFrame
+    """
     valores = data['value']
 
     # Iniciar contadores de cantidad de veces que
@@ -62,6 +69,14 @@ def obtenerMejorFit(data):
 
 
 def calcularPromedios(data):
+    """Función para calcular los promedios de cada instante
+    y graficarlos en función del tiempo.
+
+    :param data: Datos recolectados por 24 horas
+    :type data: DataFrame
+    :param data: Datos recolectados por 24 horas con promedios agregados
+    :type data: DataFrame
+    """
     # Calcular el promedio y agregarlo al dataFrame
     data['average'] = data.groupby('minutes')['value'].transform('mean')
 
@@ -87,6 +102,16 @@ def calcularPromedios(data):
 
 
 def calcularParametros(data):
+    """Función para calcular los parámetros de un ajuste normal
+    en cada instante de tiempo. También los grafica en función
+    del tiempo.
+
+    :param data: Datos recolectados por 24 horas
+    :type data: DataFrame
+    :param data: Datos recolectados con parámetros y funciones de estos
+                 en el tiempo
+    :type data: DataFrame, np.poly1d, np.poly1d
+    """
     # Se agrupan en minutos y se sacan sus valores
     agrupados = data.groupby('minutes')['value']
 
@@ -166,6 +191,20 @@ def calcularParametros(data):
 
 
 def pdf(x, t, func_mu, func_sigma):
+    """Función para calcular valores de la PDF combinada para distintos
+    valores de tiempo y variable aleatoria.
+
+    :param x: Variable aleatoria
+    :type x: NDArray
+    :param t: Eje de tiempo a evaluar
+    :type t: NDArray
+    :param func_mu: Función de mu dependiente del tiempo
+    :type func_mu: np.poly1d
+    :param func_sigma: Función de sigma dependiente del tiempo
+    :type func_sigma: np.poly1d
+    :return: Superficie 3D de la PDF evaluada.
+    :rtype: NDArray
+    """
     # Se revisa si es de día o de noche
     mask = (t > 360) & (t < 1079)
 
@@ -179,13 +218,26 @@ def pdf(x, t, func_mu, func_sigma):
 
 
 def mostrarPDF3D(func_mu, func_sigma):
+    """Función que genera un gráfico 3D de la PDF evaluada en distintos
+    puntos de tiempo y variable aleatoria.
+
+    :param func_mu: Función de mu dependiente del tiempo
+    :type func_mu: np.poly1d
+    :param func_sigma: Función de sigma dependiente del tiempo
+    :type func_sigma: np.poly1d
+    """
+
+    # Se generan vectores para los ejes
     x = np.linspace(-5, 15, 200)
     t = np.linspace(0, 24*60, 200)
 
+    # Se juntan en una superficie
     X, T = np.meshgrid(x[:, None], t)
 
+    # Se calcula el valor de la PDF
     Z = pdf(X, T, func_mu, func_sigma)
 
+    # Se genera el gráfico
     fig = plt.figure(figsize=(10, 6))
     ax = fig.add_subplot(111, projection='3d')
     surf = ax.plot_surface(X, T, Z, cmap='viridis', edgecolor='none')
@@ -203,8 +255,9 @@ def mostrarPDF3D(func_mu, func_sigma):
 
 
 if __name__ == "__main__":
-    # ES SUPER DEMANDANTE SOLO ACTIVAR SI ES NECESARIO w(ﾟДﾟ)ww(ﾟДﾟ)ww(ﾟДﾟ)w
+    # Solo habilitar esta función si se quiere verificar mejor ajuste
+    # tiene tiempo de duración extenso
     # obtenerMejorFit(data)
-    # data = calcularPromedios(data)
+    data = calcularPromedios(data)
     data, func_mu, func_sigma = calcularParametros(data)
     mostrarPDF3D(func_mu, func_sigma)
