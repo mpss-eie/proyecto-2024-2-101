@@ -48,3 +48,28 @@ $$
     \sigma(t) = -1.520736 \cdot 10^{-5}t^2 +  0.021894t - 4.915082
 \end{cases}
 $$
+
+Estos ajustes se graficaron en la figura mostrada anteriormente, donde se puede notar que se acoplan correctamente a los datos, indicando que son válidos. Se puede conseguir la función de densidad para día de esta forma:
+
+$$
+f(x_{\text{día}},t)= \frac{1}{\sqrt{2\pi (-1.520736 \cdot 10^{-5}t^2 +  0.021894t - 4.915082)^2}} e^{-\frac{(x - -4.671218 \cdot 10^{-5}t^2 + 0.067239t - 18.176150)^2}{2(-1.520736 \cdot 10^{-5}t^2 +  0.021894t - 4.915082)^2}}
+$$
+
+## Función de densidad de probabilidad
+
+Con esta información, se puede armar la forma general de la función de densidad de probabilidad para este proceso aleatorio, de la siguiente forma, donde x representa la variable aleatoria y t es el tiempo en **minutos** con dominio 0 < t < 1440 mins:
+
+$$
+f(x,t) = 
+\begin{cases}
+\frac{1}{\sqrt{2\pi \sigma(t)^2}} e^{-\frac{(x - \mu(t))^2}{2\sigma(t)^2}},\quad 360 < t < 1079 \text{ mins} \\
+\frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}},\quad \text{en otro caso}
+\end{cases}
+,\quad -\infty < x < \infty
+$$
+
+Se puede visualizar esta PDF en el siguiente gráfico 3D, evaluado en todo el dominio de tiempo establecido y en un rango reducido de x (donde se aprecia la mayoría de la amplitud no 0 de la PDF). En esta se puede notar que el cambio entre día y noche es consistente (puesto que en los puntos límites las curvas de estas secciones son muy cercanas) y se muestra el cambio durante el día.
+
+<center>
+![pdf3D](img/pdf3D.png)
+</center>
