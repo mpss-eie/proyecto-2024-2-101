@@ -23,7 +23,7 @@ distributions = [
 
 
 def obtenerMejorFit(data):
-    """Función para contar la cantidad de veces que 
+    """Función para contar la cantidad de veces que
     una distribución es el mejor ajuste para los datos,
     usando toda la muestra de datos.
 
