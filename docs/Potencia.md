@@ -13,6 +13,13 @@ $$ P_{XX} = \lim_{T \to \infty} \frac{1}{2T} \int_{-T}^{T} E[X^2(t)] \,dt = A\{E
 Por lo cual la potencia es el promedio temporal de su segundo momento ordinario, en este caso se sacó la potencia promedio en la cuando no hay luz de sol indicado por `sunlight = 0`, cuando hay luz solar indicado por `sulight = 1` y en total de todo el dia dando el siguiente resultado:
 
 
-![Histograma de variable_1](img/potenciaResultado.png)
+|  Sunlight | Promedio  | Potencia Promedio |
+|---|---|---|
+| 1 | 4.0020 | 25.0277  |
+| 0 | 0.0049 | 0.9956   |
+| Ambos casos  | 2.0062       |  13.0283        |
+
+
+
 
 Se observa que a como es esperado, la mayor potencia se da cuando `sunlight = 1` ya que es cuando se empieza a tener mayores valores mientras que cuando `sunlight = 0` se tiene que los promedios de cada instante de tiempo rondan a cero, por lo cual se produce esa significativa diferencias de potencia cuando hay luz solar.
