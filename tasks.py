@@ -38,7 +38,7 @@ def test_task(url, group):
         data = json.loads(response.text)
 
         timestamp = datetime.strptime(data["timestamp"], "%Y-%m-%d %H:%M:%S")
-        sample_size = data["sample_size"]
+        # sample_size = data["sample_size"]
         sunlight = data["sunlight"]
         data_values = data["data"]
         # Calcular minutos desde las 00:00
@@ -50,7 +50,7 @@ def test_task(url, group):
                 timestamp=timestamp,
                 sunlight=sunlight,    # Guardar si hay luz solar o no
                 value=value,           # Guardar el valor de cada muestra
-                minutes = minutes_since_midnight
+                minutes=minutes_since_midnight
             )
             session.add(record)
             session.commit()
