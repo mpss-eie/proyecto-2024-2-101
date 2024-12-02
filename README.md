@@ -1,17 +1,22 @@
 # Proyecto de programación de IE0405 - Modelos Probabilísticos de Señales y Sistemas
 
-Los archivos incluidos en el repositorio original son:
+Esta es la documentación del proyecto de programación del grupo 01 del curso Modelos Probabilísticos de Señales y Sistemas (Semestre 2 del 2024 UCR), integrado por:
 
-- `mkdocs.yml`: configuración de la documentación en Material for MkDocs. Para más detalles, ver su [documentación](https://squidfunk.github.io/mkdocs-material/).
-- `requirements.txt`: especificación de las dependencias de paquetes de Python.
-- `LICENSE`: licencia Creative Commons [Zero v1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/deed.es) de derechos de autor.
-- `.gitignore`: archivos y directorios que Git ignora para hacer control de versiones y para subir a un repositorio remoto. Típicamente son archivos con datos privados o específicos del sistema operativo local, que no deben reproducirse en el repositorio de otros desarrolladores.
+- Diego Alfaro Segura C20259
+- Bryan Cortés Espinola C22422
+- Edgar Alvarado Taleno C10351
+
+En adelante se muestran instrucciones para generar la documentación completa y ejecutar el código del proyecto.
 
 ## Documentación e instrucciones del proyecto
 
-Las intrucciones del proyecto están disponibles en la página:
+Se recomienda generar la documentación con mkdocs para obtener el informe de los resultados del proyecto. En este se muestra un análisis de los resultados obtenidos durante el mismo. Si ya tiene mkdocs instalado, ejecute desde el directorio principal el siguiente comando de bash:
 
-[https://mpss-eie.github.io/proyecto](https://mpss-eie.github.io/proyecto)
+```bash
+mkdocs serve
+```
+
+Si no posee este paquete, refierase a las siguientes instrucciones para asegurar una configuración correcta de los archivos de código y documentación.
 
 ## Instrucciones para ejecución local
 
@@ -55,7 +60,7 @@ Para comenzar, es necesario "clonar" el repositorio con sus archivos localmente.
 
 - Asegurarse de que Git está instalado. Es posible probar con `$ git --version`.
 - Ubicarse en el directorio donde estará ubicado el proyecto, con `$ cd`.
-- Clonar el proyecto con `$ git clone https://github.com/mpss-eie/proyecto.git`.
+- Clonar el proyecto con `$ git clone https://github.com/mpss-eie/proyecto-2024-2-101.git`.
 - Moverse al directorio del proyecto con `$ cd proyecto/`.
 - Si no fue hecho antes, configurar las credenciales de Git en el sistema local, con `$ git config --global user.name "Nombre Apellido"` y `$ git config --global user.email "your-email@example.com"`, de modo que quede vinculado con la cuenta de GitHub.
 
@@ -100,7 +105,7 @@ pip install -r requirements.txt
 
 Para verificar la instalación, es posible usar nuevamente `pip list`, que ahora mostrará una buena cantidad de nuevos paquetes y sus dependencias.
 
-### Para editar y visualizar la documentación
+### Para visualizar la documentación
 
 En una terminal, en el directorio raíz del repositorio, utilizar:
 
@@ -110,68 +115,8 @@ mkdocs serve
 
 Abrir en un navegador web la página del "servidor local" en el puerto 8000, en [http://127.0.0.1:8000/](http://127.0.0.1:8000/) o en [http://localhost:8000/](http://localhost:8000/).
 
-Cada cambio en los documentos de la carpeta `docs/` o en el archivo `mkdocs.yml` genera un refrescamiento de la página.
-
 Para salir de la visualización, utilizar `Ctrl + C`, de otro modo dejar el proceso corriendo mientras edita la documentación.
 
 ### Para ejecutar el proyecto
 
-- En el directorio raíz, crear un archivo `proyecto.cfg` con el siguiente contenido:
-
-```
-[api]
-url = https://kalouk.xyz/api/datos
-group = 000
-
-[db]
-db = sqlite
-sqlite = sqlite:///proyecto.db
-postgresql = postgresql://localhost:5432/proyecto
-
-[scheduler]
-period = 15
-```
-
-y modificar según las necesidades de su implementación. Es recomendable mantener un archivo de configuración con las variables separadas del código, para no *hard-codear*-las.
-
-- En una nueva terminal ejecutar el siguiente comando para activar **Redis** (más detalles en la documentación): 
-
-```bash
-redis-server
-```
-
-dejar esta terminal "corriendo".
-
-Nota: en sistemas Linux usualmente ya está corriendo como *servicio del sistema* y por tanto dará un error de que ya está ocupado el proceso. En ese caso es posible ignorar este paso.
-
-- En una nueva terminal ejecutar el siguiente comando para activar **Celery Worker** (más detalles en la documentación):
-
-```bash
-celery --app tasks worker --loglevel=INFO
-```
-
-dejar esta terminal "corriendo". 
-
-**Nota**: cada vez que haya cambios en `tasks.py` debe reiniciarse este proceso (Ctrl + C para detener).
-
-- En una nueva terminal ejecutar el siguiente comando para activar **Celery Beat** (más detalles en la documentación):
-
-```bash
-celery --app tasks beat --loglevel=INFO
-```
-
-dejar esta terminal "corriendo".
-
-En este punto, ya el código de ejemplo debería estar importando y guardando datos en la base de datos, según está detallado en `models.py` y `tasks.py`.
-
-**Nota**: para hacer una sola prueba de la función (`@app.task`) y no activar Celery Beat, es posible utilizar en la terminal, en el mismo directorio que `tasks.py`:
-
-```bash
-$ python
->>> from tasks import test_task
->>> url = "https://kalouk.xyz/api/datos"
->>> group = "000"
->>> test_task.delay(url, group)
-```
-
-Es decir, utilizar Python para importar la función `test_task` (o la función de su proyecto) y ejecutar el método `.delay()` para ejecución sincrónica ("en el momento").
+Para correr el código y así generar los resultados obtenidos, desde el directorio principal del repo debe ejecutar [`src/main.py`](/src/main.py) e ingresar según el menú mostrado cual sección quiere ejecutar (ya sea la sección del avance de proyecto, la de la parte final o ambas). Existen algunas funcionalidades que se consideraron muy extensas para incluir en este main, como lo fue la obtención de mejor distribución en la sección final del proyecto, para ejecutar dicha función se debe ejecutar el archivo [`src/finalPDF.py`](/src/finalPDF.py) directamente.

@@ -96,6 +96,7 @@ if __name__ == "__main__":
     de dichos resultados.
     """
 
+    # Se genera un menú para escoger la sección de código a ejecutar
     print("Digite la sección de código que quiere correr:")
     print("1 - Solo avance")
     print("2 - Solo parte final")
