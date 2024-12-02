@@ -59,7 +59,6 @@ A continuación, se presentan los resultados de correlación, covarianza y varia
 | 520-560          | -0.2614     | -0.0025    | 0.0095   |
 | 560-600          | 0.0904      | 0.0015     | 0.0172   |
 | 600-640          | -0.0005     | -0.0000    | 0.0087   |
-| 640-680          |             |            | 0.0121   |
 
 ### Relación entre Correlación, Covarianza y Varianza
 
