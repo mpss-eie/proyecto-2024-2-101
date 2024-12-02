@@ -105,9 +105,9 @@ def calcularParametros(data):
 
     plt.figure(figsize=(8, 5))
     plt.plot(eje_minutos['minutes'], eje_minutos['loc'],
-             marker='o', linestyle='--', label='loc')
+             marker='o', linestyle='--', label='μ')
     plt.plot(eje_minutos['minutes'], eje_minutos['scale'],
-             marker='o', linestyle='--', label='scale')
+             marker='o', linestyle='--', label='σ')
 
     # Se hacen las aproximaciones y se grafican
 
@@ -125,18 +125,22 @@ def calcularParametros(data):
 
     # Se muestran los polinomios y los límites del día
     plt.plot(eje_minutos['minutes'], poly_loc(eje_minutos['minutes']),
-             label='Polinomio loc')
+             label='Polinomio μ')
 
     plt.plot(eje_minutos['minutes'], poly_scale(eje_minutos['minutes']),
-             label='Polinomio scale')
+             label='Polinomio σ')
 
     plt.plot((minDia, minDia), (-0.5, 7.2), scaley=False,
              linestyle='dashed', color='gray')
     plt.plot((maxDia, maxDia), (-0.5, 7.2), scaley=False,
              linestyle='dashed', color='gray')
 
+    plt.text(1000, 6.5, 'Día', color='black')
+    plt.text(200, 6.5, 'Noche', color='black')
+    plt.text(200, 6.5, 'Noche', color='black')
+
     # Personalización
-    plt.title('Variación de parámetros loc y scale según el tiempo.')
+    plt.title('Variación de parámetros loc (μ) y scale (σ) según el tiempo.')
     plt.xlabel('Tiempo (Minutos)')
     plt.ylabel('Valor de parámetros')
     plt.grid()
@@ -147,12 +151,16 @@ def calcularParametros(data):
 
     # Se muestran los polinomios
     coef_loc = poly_loc.coefficients
-    print(f"Poly_loc = {coef_loc[0]}x^2 + {coef_loc[1]}x "
+    print(f"Poly_loc (μ) = {coef_loc[0]}t^2 + {coef_loc[1]}t "
           f"+ {coef_loc[2]}")
 
     coef_scale = poly_scale.coefficients
-    print(f"Poly_scale = {coef_scale[0]}x^2 + {coef_scale[1]}x "
+    print(f"Poly_scale (σ) = {coef_scale[0]}t^2 + {coef_scale[1]}t "
           f"+ {coef_scale[2]}")
+
+    # Se indican los límites del día
+    print(f"Inicio del sunlight en minuto: {minDia}")
+    print(f"Final del sunlight en minuto: {maxDia}")
 
     return data, poly_loc, poly_scale
 
