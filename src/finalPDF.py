@@ -80,7 +80,7 @@ def calcularPromedios(data):
     plt.xlabel('Tiempo (Minutos)')
     plt.ylabel('Promedio')
     plt.grid()
-    plt.savefig('src/img/promedio_tiempo.png')
+    plt.savefig('src/img/promedio_tiempo.png', dpi=300)
     plt.show()
 
     return data
@@ -146,7 +146,7 @@ def calcularParametros(data):
     plt.grid()
     plt.legend()
     plt.ylim(top=7.2, bottom=-0.5)
-    plt.savefig('src/img/parametros_tiempo.png')
+    plt.savefig('src/img/parametros_tiempo.png', dpi=300)
     plt.show()
 
     # Se muestran los polinomios
@@ -165,8 +165,46 @@ def calcularParametros(data):
     return data, poly_loc, poly_scale
 
 
+def pdf(x, t, func_mu, func_sigma):
+    # Se revisa si es de día o de noche
+    mask = (t > 360) & (t < 1079)
+
+    # Se calculan los parámetros según condición del día
+    sigma = np.where(mask, func_sigma(t), 1)
+    mu = np.where(mask, func_mu(t), 0)
+
+    # Se calcula la densidad de probabilidad
+    return (1 / np.sqrt(2 * np.pi * sigma**2)) \
+        * np.exp(-((x - mu)**2) / (2 * sigma**2))
+
+
+def mostrarPDF3D(func_mu, func_sigma):
+    x = np.linspace(-5, 15, 200)
+    t = np.linspace(0, 24*60, 200)
+
+    X, T = np.meshgrid(x[:, None], t)
+
+    Z = pdf(X, T, func_mu, func_sigma)
+
+    fig = plt.figure(figsize=(10, 6))
+    ax = fig.add_subplot(111, projection='3d')
+    surf = ax.plot_surface(X, T, Z, cmap='viridis', edgecolor='none')
+
+    # Personalización
+    ax.set_xlabel('Variable aleatoria (x)')
+    ax.set_ylabel('Tiempo en minutos (t)')
+    ax.set_zlabel('PDF')
+    ax.set_title('Gráfico 3D de PDF')
+    fig.colorbar(surf, ax=ax, shrink=0.5, aspect=10)
+    ax.view_init(elev=23, azim=-51)
+
+    plt.savefig('src/img/pdf3D.png')
+    plt.show()
+
+
 if __name__ == "__main__":
     # ES SUPER DEMANDANTE SOLO ACTIVAR SI ES NECESARIO w(ﾟДﾟ)ww(ﾟДﾟ)ww(ﾟДﾟ)w
     # obtenerMejorFit(data)
-    data = calcularPromedios(data)
-    data, poly_loc, poly_scale = calcularParametros(data)
+    # data = calcularPromedios(data)
+    data, func_mu, func_sigma = calcularParametros(data)
+    mostrarPDF3D(func_mu, func_sigma)
