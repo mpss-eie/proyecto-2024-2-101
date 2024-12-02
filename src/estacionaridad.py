@@ -93,6 +93,7 @@ def analizar_noche(data, ruta_guardado='src_im'):
     plt.xlabel("Minuto de inicio de la ventana")
     plt.ylabel("Correlación")
     plt.grid()
+    plt.show()
 
     # Guardar la gráfica de correlación
     guardar_grafica(ruta_guardado, "correlacion_noche.png")
@@ -154,6 +155,7 @@ def analizar_noche_con_covarianza(data, ruta_guardado='src_im'):
     plt.xlabel("Minuto de inicio de la ventana")
     plt.ylabel("Covarianza")
     plt.grid()
+    plt.show()
 
     # Guardar la gráfica de covarianza
     guardar_grafica(ruta_guardado, "covarianza_noche.png")
@@ -209,6 +211,7 @@ def verificar_estacionaridad(data, ruta_guardado='src/img'):
     plt.ylabel("Promedio")
     plt.legend()
     plt.grid()
+    plt.show()
     guardar_grafica(ruta_guardado, "media_movil_noche.png")
 
     # Calcular y mostrar varianza por ventanas
@@ -236,6 +239,7 @@ def verificar_estacionaridad(data, ruta_guardado='src/img'):
     plt.ylabel("Varianza")
     plt.legend()
     plt.grid()
+    plt.show()
     guardar_grafica(ruta_guardado, "varianza_noche.png")
 
 

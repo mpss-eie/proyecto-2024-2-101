@@ -44,10 +44,6 @@ def graficar_promedio_por_minuto():
     plt.show()
 
 
-# Llamar a la función
-graficar_promedio_por_minuto()
-
-
 def calcular_potencia_promedio():
     """
     Esta función conecta con la base de datos 'proyecto.db', extrae los datos
@@ -96,11 +92,11 @@ def calcular_potencia_promedio():
 
     # Imprimir los resultados
     print(
-        f"Sunlight = 1 -> Promedio: {promedio_1}"
+        f"Sunlight = 1 -> Promedio: {promedio_1}\n"
         f"Potencia Promedio: {pot_with_sunlight}"
         )
     print(
-        f"Sunlight = 0 -> Promedio: {promedio_0}"
+        f"Sunlight = 0 -> Promedio: {promedio_0}\n"
         f"Potencia Promedio: {pot_without_sunlight}"
         )
 
@@ -108,10 +104,12 @@ def calcular_potencia_promedio():
     pot_total = (df["value"] ** 2).mean()
 
     print(
-        f"El promedio total es {promedio}"
+        f"El promedio total es {promedio}\n"
         f"La potencia promedio total es {pot_total}"
         )
 
 
 # Llamada a la función
-calcular_potencia_promedio()
+if __name__ == "__main__":
+    graficar_promedio_por_minuto()
+    calcular_potencia_promedio()
