@@ -23,6 +23,13 @@ distributions = [
 
 
 def obtenerMejorFit(data):
+    """Función para contar la cantidad de veces que 
+    una distribución es el mejor ajuste para los datos,
+    usando toda la muestra de datos.
+
+    :param data: Datos recolectados por 24 horas
+    :type data: DataFrame
+    """
     valores = data['value']
 
     # Iniciar contadores de cantidad de veces que
@@ -62,6 +69,14 @@ def obtenerMejorFit(data):
 
 
 def calcularPromedios(data):
+    """Función para calcular los promedios de cada instante
+    y graficarlos en función del tiempo.
+
+    :param data: Datos recolectados por 24 horas
+    :type data: DataFrame
+    :param data: Datos recolectados por 24 horas con promedios agregados
+    :type data: DataFrame
+    """
     # Calcular el promedio y agregarlo al dataFrame
     data['average'] = data.groupby('minutes')['value'].transform('mean')
 
@@ -80,13 +95,23 @@ def calcularPromedios(data):
     plt.xlabel('Tiempo (Minutos)')
     plt.ylabel('Promedio')
     plt.grid()
-    plt.savefig('src/img/promedio_tiempo.png')
+    plt.savefig('src/img/promedio_tiempo.png', dpi=300)
     plt.show()
 
     return data
 
 
 def calcularParametros(data):
+    """Función para calcular los parámetros de un ajuste normal
+    en cada instante de tiempo. También los grafica en función
+    del tiempo.
+
+    :param data: Datos recolectados por 24 horas
+    :type data: DataFrame
+    :param data: Datos recolectados con parámetros y funciones de estos
+                 en el tiempo
+    :type data: DataFrame, np.poly1d, np.poly1d
+    """
     # Se agrupan en minutos y se sacan sus valores
     agrupados = data.groupby('minutes')['value']
 
@@ -105,9 +130,9 @@ def calcularParametros(data):
 
     plt.figure(figsize=(8, 5))
     plt.plot(eje_minutos['minutes'], eje_minutos['loc'],
-             marker='o', linestyle='--', label='loc')
+             marker='o', linestyle='--', label='μ')
     plt.plot(eje_minutos['minutes'], eje_minutos['scale'],
-             marker='o', linestyle='--', label='scale')
+             marker='o', linestyle='--', label='σ')
 
     # Se hacen las aproximaciones y se grafican
 
@@ -125,40 +150,114 @@ def calcularParametros(data):
 
     # Se muestran los polinomios y los límites del día
     plt.plot(eje_minutos['minutes'], poly_loc(eje_minutos['minutes']),
-             label='Polinomio loc')
+             label='Polinomio μ')
 
     plt.plot(eje_minutos['minutes'], poly_scale(eje_minutos['minutes']),
-             label='Polinomio scale')
+             label='Polinomio σ')
 
     plt.plot((minDia, minDia), (-0.5, 7.2), scaley=False,
              linestyle='dashed', color='gray')
     plt.plot((maxDia, maxDia), (-0.5, 7.2), scaley=False,
              linestyle='dashed', color='gray')
 
+    plt.text(1000, 6.5, 'Día', color='black')
+    plt.text(200, 6.5, 'Noche', color='black')
+    plt.text(200, 6.5, 'Noche', color='black')
+
     # Personalización
-    plt.title('Variación de parámetros loc y scale según el tiempo.')
+    plt.title('Variación de parámetros loc (μ) y scale (σ) según el tiempo.')
     plt.xlabel('Tiempo (Minutos)')
     plt.ylabel('Valor de parámetros')
     plt.grid()
     plt.legend()
     plt.ylim(top=7.2, bottom=-0.5)
-    plt.savefig('src/img/parametros_tiempo.png')
+    plt.savefig('src/img/parametros_tiempo.png', dpi=300)
     plt.show()
 
     # Se muestran los polinomios
     coef_loc = poly_loc.coefficients
-    print(f"Poly_loc = {coef_loc[0]}x^2 + {coef_loc[1]}x "
+    print(f"Poly_loc (μ) = {coef_loc[0]}t^2 + {coef_loc[1]}t "
           f"+ {coef_loc[2]}")
 
     coef_scale = poly_scale.coefficients
-    print(f"Poly_scale = {coef_scale[0]}x^2 + {coef_scale[1]}x "
+    print(f"Poly_scale (σ) = {coef_scale[0]}t^2 + {coef_scale[1]}t "
           f"+ {coef_scale[2]}")
+
+    # Se indican los límites del día
+    print(f"Inicio del sunlight en minuto: {minDia}")
+    print(f"Final del sunlight en minuto: {maxDia}")
 
     return data, poly_loc, poly_scale
 
 
+def pdf(x, t, func_mu, func_sigma):
+    """Función para calcular valores de la PDF combinada para distintos
+    valores de tiempo y variable aleatoria.
+
+    :param x: Variable aleatoria
+    :type x: NDArray
+    :param t: Eje de tiempo a evaluar
+    :type t: NDArray
+    :param func_mu: Función de mu dependiente del tiempo
+    :type func_mu: np.poly1d
+    :param func_sigma: Función de sigma dependiente del tiempo
+    :type func_sigma: np.poly1d
+    :return: Superficie 3D de la PDF evaluada.
+    :rtype: NDArray
+    """
+    # Se revisa si es de día o de noche
+    mask = (t > 360) & (t < 1079)
+
+    # Se calculan los parámetros según condición del día
+    sigma = np.where(mask, func_sigma(t), 1)
+    mu = np.where(mask, func_mu(t), 0)
+
+    # Se calcula la densidad de probabilidad
+    return (1 / np.sqrt(2 * np.pi * sigma**2)) \
+        * np.exp(-((x - mu)**2) / (2 * sigma**2))
+
+
+def mostrarPDF3D(func_mu, func_sigma):
+    """Función que genera un gráfico 3D de la PDF evaluada en distintos
+    puntos de tiempo y variable aleatoria.
+
+    :param func_mu: Función de mu dependiente del tiempo
+    :type func_mu: np.poly1d
+    :param func_sigma: Función de sigma dependiente del tiempo
+    :type func_sigma: np.poly1d
+    """
+
+    # Se generan vectores para los ejes
+    x = np.linspace(-5, 15, 200)
+    t = np.linspace(0, 24*60, 200)
+
+    # Se juntan en una superficie
+    X, T = np.meshgrid(x[:, None], t)
+
+    # Se calcula el valor de la PDF
+    Z = pdf(X, T, func_mu, func_sigma)
+
+    # Se genera el gráfico
+    fig = plt.figure(figsize=(10, 6))
+    ax = fig.add_subplot(111, projection='3d')
+    surf = ax.plot_surface(X, T, Z, cmap='viridis', edgecolor='none')
+
+    # Personalización
+    ax.set_xlabel('Variable aleatoria (x)')
+    ax.set_ylabel('Tiempo en minutos (t)')
+    ax.set_zlabel('PDF')
+    ax.set_title('Gráfico 3D de PDF')
+    fig.colorbar(surf, ax=ax, shrink=0.5, aspect=10)
+    ax.view_init(elev=23, azim=-51)
+
+    plt.savefig('src/img/pdf3D.png')
+    plt.show()
+
+
 if __name__ == "__main__":
-    # ES SUPER DEMANDANTE SOLO ACTIVAR SI ES NECESARIO w(ﾟДﾟ)ww(ﾟДﾟ)ww(ﾟДﾟ)w
+    # Solo habilitar esta función si se quiere verificar mejor ajuste
+    # tiene tiempo de duración extenso
     # obtenerMejorFit(data)
     data = calcularPromedios(data)
-    data, poly_loc, poly_scale = calcularParametros(data)
+    data, func_mu, func_sigma = calcularParametros(data)
+    mostrarPDF3D(func_mu, func_sigma)

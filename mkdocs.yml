@@ -2,12 +2,10 @@ site_name: Proyecto de Programación de Modelos Probabilísticos
 
 nav:
   - Inicio: index.md
-  - Recopilación: recopilacion.md
-  - Procesamiento: procesamiento.md
-  - Modelos: modelos.md
-  - Instrucciones: instrucciones.md
-  - Atributos: atributos.md
   - Avance: avance.md
+  - Final:Obtención de datos: finalObtencionDatos.md
+  - Final:PDF : finalFuncion.md
+  - Final:Potencia Promedio : Potencia.md
 
 theme: 
   name: material
