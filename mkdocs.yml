@@ -2,7 +2,8 @@ site_name: Proyecto de Programación de Modelos Probabilísticos
 
 nav:
   - Inicio: index.md
-  - Avance: avance.md
+  - Avance:Modelos: avanceModelos.md
+  - Avance:Momentos: avanceMomentos.md
   - Final:Obtención de datos: finalObtencionDatos.md
   - Final:PDF : finalFuncion.md
   - Final:Estacionaridad en Sentido Amplio y Ergodicidad : Estacionaridad_ergodicidad.md

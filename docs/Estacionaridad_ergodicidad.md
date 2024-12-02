@@ -1,4 +1,4 @@
-# Determinación de la Estacionaridad y Ergodicidad de los Datos Recolectados
+# Reporte final: Determinación de la Estacionaridad y Ergodicidad de los Datos Recolectados
 
 En este análisis, se examinan los datos recolectados para determinar su estacionaridad en sentido amplio y su ergodicidad. Para ello, se utilizaron dos herramientas principales: el análisis del promedio a lo largo del tiempo y el estudio de la covarianza entre los puntos de la serie temporal.
 

@@ -257,7 +257,7 @@ def mostrarPDF3D(func_mu, func_sigma):
 if __name__ == "__main__":
     # Solo habilitar esta función si se quiere verificar mejor ajuste
     # tiene tiempo de duración extenso
-    # obtenerMejorFit(data)
+    obtenerMejorFit(data)
     data = calcularPromedios(data)
     data, func_mu, func_sigma = calcularParametros(data)
     mostrarPDF3D(func_mu, func_sigma)

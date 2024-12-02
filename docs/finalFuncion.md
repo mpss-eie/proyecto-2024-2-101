@@ -1,4 +1,4 @@
-# Reporte final: Obtención de función de densidad temporal
+# Reporte final: Obtención de función de densidad de probabilidad
 
 A partir de la recolección de datos realizada durante 24 horas, se puede determinar la función de densidad del proceso aleatorio al primero identificar la distribución de los datos, y luego obtener una función en el tiempo de sus parámetros. Según se indicó, la distribución del proceso no cambia con el tiempo (como es usual en procesos típicos), solo sus parámetros. Una vez se obtenga la función de densidad del proceso, se puede estudiar más profundamente.
 
@@ -13,7 +13,7 @@ Primeramente, se generó un gráfico de la variación del promedio de los datos 
 
 ## Identificación de distribución
 
-Para identificar el tipo de distribución que mejor describe a los datos en su totalidad, se emplea la función `get.best()` del paquete `Fitter`, la cual ajusta los datos a un conjunto de distribuciones distintas y determina cual posee el menor error (y por ende es la mejor). Para realizar correctamente esta prueba se debe aplicar a los datos obtenidos en un mismo instante de tiempo, es decir se hace el ajuste para los 100 datos de un mismo timestamp. Para ser robustos y asegurarse que la distribución empleada es la más representativa del proceso, se utilizó la función `obtenerMejorFit` (elaborada en el archivo `finalPDF.py`) que obtiene el mejor ajuste de cada instante de tiempo disponible y los cuenta según mayor frecuencia. *Esta función se encuentra desactivada en el código, pues solo es necesaria emplearla una vez y su tiempo de ejecución es extenso.*
+Para identificar el tipo de distribución que mejor describe a los datos en su totalidad, se emplea la función `get.best()` del paquete `Fitter`, la cual ajusta los datos a un conjunto de distribuciones distintas y determina cual posee el menor error (y por ende es la mejor). Para realizar correctamente esta prueba se debe aplicar a los datos obtenidos en un mismo instante de tiempo, es decir se hace el ajuste para los 100 datos de un mismo timestamp. Para ser robustos y asegurarse que la distribución empleada es la más representativa del proceso, se utilizó la función `obtenerMejorFit` (elaborada en el archivo `finalPDF.py`) que obtiene el mejor ajuste de cada instante de tiempo disponible y los cuenta según mayor frecuencia.  **Nota: Para correr esta función se debe correr src/finalPDF.py directamente, pero es bastante extensa, para verificar los datos se recomienda ver el archivo de memoria de dicha función [resultadosPruebasFitting](misc/resultadosPruebasFitting.txt)**
 
 Ajustando con las 6 distribuciones indicadas para este proyecto: exponencial, gompertz, levy, logistic, normal y rayleigh. Se obtuvieron los siguientes resultados:
 

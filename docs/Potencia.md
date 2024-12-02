@@ -1,4 +1,4 @@
-# Potencia Promedio
+# Reporte final: Potencia Promedio
 La potencia promedio de un proceso estocástico 𝑋(𝑡) es una medida del promedio de la potencia instantánea del proceso a lo largo del tiempo. Describe el nivel de energía promedio por unidad de tiempo asociado con el proceso. Este concepto es fundamental en el análisis de señales aleatorias, especialmente cuando se desea evaluar la intensidad de una señal en el tiempo.
  Se define como:
 
