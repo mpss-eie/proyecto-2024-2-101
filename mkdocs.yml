@@ -5,6 +5,7 @@ nav:
   - Avance: avance.md
   - Final:Obtención de datos: finalObtencionDatos.md
   - Final:PDF : finalFuncion.md
+  - Final:Potencia Promedio : Potencia.md
 
 theme: 
   name: material
