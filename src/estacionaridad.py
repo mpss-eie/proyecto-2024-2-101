@@ -241,7 +241,7 @@ def verificar_estacionaridad(data, ruta_guardado='src/img'):
 
 if __name__ == "__main__":
     # Ruta donde se guardarán las imágenes
-    ruta_imagenes = 'src_im'
+    ruta_imagenes = 'src/img'
 
     # Análisis para la noche
     # Determinar estacionaridad

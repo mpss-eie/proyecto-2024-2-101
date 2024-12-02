@@ -131,7 +131,7 @@ def analizar_ergodicidad(data, ruta_guardado="src/img"):
 
 if __name__ == "__main__":
     # Ruta donde se guardarán las imágenes
-    ruta_imagenes = "src_im2"
+    ruta_imagenes = "src/img"
 
     # Determinar ergodicidad.
     analizar_ergodicidad(data, ruta_guardado=ruta_imagenes)
