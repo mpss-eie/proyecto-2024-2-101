@@ -1,0 +1,899 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../finalFuncion/">
+      
+      
+        <link rel="next" href="../Potencia/">
+      
+      
+      <link rel="icon" href="../img/plot.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Final:Estacionaridad en Sentido Amplio y Ergodicidad - Proyecto de Programación de Modelos Probabilísticos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reporte-final-determinacion-de-la-estacionaridad-y-ergodicidad-de-los-datos-recolectados" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Proyecto de Programación de Modelos Probabilísticos" class="md-header__button md-logo" aria-label="Proyecto de Programación de Modelos Probabilísticos" data-md-component="logo">
+      
+  <img src="../img/plot.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto de Programación de Modelos Probabilísticos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Final:Estacionaridad en Sentido Amplio y Ergodicidad
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../avanceModelos/" class="md-tabs__link">
+        
+  
+    
+  
+  Avance:Modelos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../avanceMomentos/" class="md-tabs__link">
+        
+  
+    
+  
+  Avance:Momentos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../finalObtencionDatos/" class="md-tabs__link">
+        
+  
+    
+  
+  Final:Obtención de datos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../finalFuncion/" class="md-tabs__link">
+        
+  
+    
+  
+  Final:PDF
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Final:Estacionaridad en Sentido Amplio y Ergodicidad
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Potencia/" class="md-tabs__link">
+        
+  
+    
+  
+  Final:Potencia Promedio
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Proyecto de Programación de Modelos Probabilísticos" class="md-nav__button md-logo" aria-label="Proyecto de Programación de Modelos Probabilísticos" data-md-component="logo">
+      
+  <img src="../img/plot.png" alt="logo">
+
+    </a>
+    Proyecto de Programación de Modelos Probabilísticos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avanceModelos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Avance:Modelos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avanceMomentos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Avance:Momentos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finalObtencionDatos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Final:Obtención de datos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finalFuncion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Final:PDF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Final:Estacionaridad en Sentido Amplio y Ergodicidad
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Final:Estacionaridad en Sentido Amplio y Ergodicidad
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estacionaridad-en-sentido-amplio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estacionaridad en Sentido Amplio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estacionaridad en Sentido Amplio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analisis-visual-del-promedio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Análisis Visual del Promedio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analisis-de-covarianza" class="md-nav__link">
+    <span class="md-ellipsis">
+      Análisis de Covarianza
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Análisis de Covarianza">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resultados-combinados-de-correlacion-covarianza-y-varianza-por-ventanas-de-40-minutos-noche" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resultados Combinados de Correlación, Covarianza y Varianza por Ventanas de 40 Minutos (Noche)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacion-entre-correlacion-covarianza-y-varianza" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relación entre Correlación, Covarianza y Varianza
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ergodicidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ergodicidad
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ergodicidad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estacionaridad-y-ergodicidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estacionaridad y Ergodicidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promedio-temporal-y-promedio-estadistico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promedio Temporal y Promedio Estadístico
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-de-la-estacionaridad-y-ergodicidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusión de la Estacionaridad y Ergodicidad
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conclusión de la Estacionaridad y Ergodicidad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#estacionaridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estacionaridad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ergodicidad_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ergodicidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusión Final
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Potencia/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Final:Potencia Promedio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="reporte-final-determinacion-de-la-estacionaridad-y-ergodicidad-de-los-datos-recolectados">Reporte final: Determinación de la Estacionaridad y Ergodicidad de los Datos Recolectados</h1>
+<p>En este análisis, se examinan los datos recolectados para determinar su estacionaridad en sentido amplio y su ergodicidad. Para ello, se utilizaron dos herramientas principales: el análisis del promedio a lo largo del tiempo y el estudio de la covarianza entre los puntos de la serie temporal.</p>
+<h2 id="estacionaridad-en-sentido-amplio">Estacionaridad en Sentido Amplio</h2>
+<p>La estacionaridad en sentido amplio de una serie temporal significa que las propiedades estadísticas de la serie (promedio, varianza y covarianza) no cambian con el tiempo. Específicamente, para determinar la estacionaridad en sentido amplio, se deben cumplir dos condiciones:</p>
+<ol>
+<li>El promedio debe ser constante a lo largo de la serie temporal.</li>
+<li>La covarianza entre varios puntos debe ser igual (o muy similar) a través del tiempo.</li>
+</ol>
+<p>En primer lugar, se visualizó el promedio en función del tiempo para observar si este se mantenía constante.</p>
+<p><center>
+<img alt="Promedio en función del tiempo" src="../img/promedio_tiempo.png" />
+</center></p>
+<h3 id="analisis-visual-del-promedio">Análisis Visual del Promedio</h3>
+<p>Al examinar el gráfico, se observa que el promedio del conjunto total de muestras no es constante a lo largo del tiempo, especialmente en el rango de tiempo de 360 a 1079 minutos, que corresponde al periodo diurno. Durante este rango, el promedio presenta una variación significativa. Sin embargo, al considerar solo los rangos de 0 a 359 minutos y 1080 a 1400 minutos (noche), se observa que el promedio tiende a estabilizarse, lo que sugiere que durante la noche los datos pueden ser estacionarios.</p>
+<h3 id="analisis-de-covarianza">Análisis de Covarianza</h3>
+<p>Dado que el promedio no es constante en toda la serie, se analizó la covarianza entre los puntos de la serie temporal, particularmente en el intervalo nocturno (0-359 y 1080-1400 minutos), para evaluar si es estacionaria en sentido amplio.</p>
+<p>Para facilitar la comparación de los datos y mejorar su interpretación, las muestras del intervalo nocturno se normalizaron para que todos los datos estuvieran en un rango similar, comenzando desde el minuto 0 y hasta el minuto 720. Esto permite observar los patrones sin la interferencia de los cambios de tiempo en el rango original, haciendo que los datos nocturnos sean más fáciles de visualizar y analizar de forma precisa.</p>
+<p>Durante este análisis, se utilizó una media móvil de 40 minutos para suavizar las fluctuaciones a corto plazo y proporcionar una visión más clara de la tendencia general de los datos. La media móvil es una técnica estadística que calcula el promedio de los valores en una ventana de tiempo deslizante, lo que ayuda a identificar patrones y tendencias a lo largo del tiempo, minimizando el impacto de las variaciones aleatorias.</p>
+<p>A continuación, también se calculó la media global de los datos nocturnos, que representa el promedio de todos los puntos dentro del intervalo de tiempo analizado, sin tener en cuenta las fluctuaciones a corto plazo. Esta media global sirve como referencia para comparar las variaciones en la serie temporal.</p>
+<p>En el gráfico a continuación se muestra la media móvil de 40 minutos, junto con la media global para el intervalo nocturno:</p>
+<p><center>
+<img alt="Promedio nocturno media movil y media global" src="../img/media_movil_noche.png" />
+</center></p>
+<p>Este gráfico ilustra cómo la media móvil ayuda a suavizar las fluctuaciones y cómo la media global representa el promedio general de las muestras durante el período nocturno.</p>
+<h4 id="resultados-combinados-de-correlacion-covarianza-y-varianza-por-ventanas-de-40-minutos-noche">Resultados Combinados de Correlación, Covarianza y Varianza por Ventanas de 40 Minutos (Noche)</h4>
+<p>A continuación, se presentan los resultados de correlación, covarianza y varianza calculados en ventanas de 40 minutos:</p>
+<table>
+<thead>
+<tr>
+<th>Minuto de inicio</th>
+<th>Correlación</th>
+<th>Covarianza</th>
+<th>Varianza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-40</td>
+<td>-0.0877</td>
+<td>-0.0010</td>
+<td>0.0109</td>
+</tr>
+<tr>
+<td>40-80</td>
+<td>0.0362</td>
+<td>0.0005</td>
+<td>0.0123</td>
+</tr>
+<tr>
+<td>80-120</td>
+<td>0.1294</td>
+<td>0.0013</td>
+<td>0.0097</td>
+</tr>
+<tr>
+<td>120-160</td>
+<td>0.0759</td>
+<td>0.0004</td>
+<td>0.0049</td>
+</tr>
+<tr>
+<td>160-200</td>
+<td>0.0222</td>
+<td>0.0004</td>
+<td>0.0162</td>
+</tr>
+<tr>
+<td>200-240</td>
+<td>-0.0288</td>
+<td>-0.0003</td>
+<td>0.0107</td>
+</tr>
+<tr>
+<td>240-280</td>
+<td>0.0804</td>
+<td>0.0008</td>
+<td>0.0098</td>
+</tr>
+<tr>
+<td>280-320</td>
+<td>0.1202</td>
+<td>0.0009</td>
+<td>0.0076</td>
+</tr>
+<tr>
+<td>320-360</td>
+<td>0.0462</td>
+<td>0.0004</td>
+<td>0.0087</td>
+</tr>
+<tr>
+<td>360-400</td>
+<td>-0.0242</td>
+<td>-0.0002</td>
+<td>0.0097</td>
+</tr>
+<tr>
+<td>400-440</td>
+<td>-0.2325</td>
+<td>-0.0031</td>
+<td>0.0131</td>
+</tr>
+<tr>
+<td>440-480</td>
+<td>0.0287</td>
+<td>0.0003</td>
+<td>0.0092</td>
+</tr>
+<tr>
+<td>480-520</td>
+<td>-0.1053</td>
+<td>-0.0009</td>
+<td>0.0088</td>
+</tr>
+<tr>
+<td>520-560</td>
+<td>-0.2614</td>
+<td>-0.0025</td>
+<td>0.0095</td>
+</tr>
+<tr>
+<td>560-600</td>
+<td>0.0904</td>
+<td>0.0015</td>
+<td>0.0172</td>
+</tr>
+<tr>
+<td>600-640</td>
+<td>-0.0005</td>
+<td>-0.0000</td>
+<td>0.0087</td>
+</tr>
+</tbody>
+</table>
+<h3 id="relacion-entre-correlacion-covarianza-y-varianza">Relación entre Correlación, Covarianza y Varianza</h3>
+<p>Los resultados de la correlación, covarianza y varianza se presentan en conjunto para proporcionar una visión más completa del comportamiento de la serie temporal. La correlación mide la relación lineal entre los puntos de la serie en las distintas ventanas, mientras que la covarianza describe cómo varían conjuntamente dos variables, y la varianza indica cuánto se dispersan los datos en cada ventana. </p>
+<ul>
+<li>
+<p><strong>Correlación</strong>: En las ventanas de tiempo, se observa que la correlación varía entre valores negativos y positivos, lo que indica que las relaciones entre los puntos de la serie no son completamente constantes a lo largo del tiempo. Sin embargo, la falta de cambios abruptos en la correlación dentro del intervalo nocturno (0-359 y 1080-1400 minutos) sugiere una estabilidad relativa en ese periodo.</p>
+</li>
+<li>
+<p><strong>Covarianza</strong>: Similar a la correlación, la covarianza también muestra variaciones pequeñas y estables durante la noche, lo que indica que las fluctuaciones entre los puntos de la serie son relativamente constantes, sin mostrar grandes tendencias o desviaciones.</p>
+</li>
+<li>
+<p><strong>Varianza</strong>: La varianza muestra los niveles de dispersión de los datos dentro de cada ventana de 40 minutos. Aunque hay algunas variaciones, especialmente en las primeras ventanas, la varianza permanece dentro de un rango relativamente estable en la noche.</p>
+</li>
+</ul>
+<p>Para una representación visual de estos resultados, se pueden consultar los gráficos de correlación, covarianza y varianza obtenidos:</p>
+<ul>
+<li>Correlación: <img alt="Correlación Noche" src="../img/correlacion_noche.png" /></li>
+<li>Covarianza: <img alt="Covarianza Noche" src="../img/covarianza_noche.png" /></li>
+<li>Varianza: <img alt="Varianza Noche" src="../img/varianza_noche.png" /></li>
+</ul>
+<h2 id="ergodicidad">Ergodicidad</h2>
+<p>La ergodicidad se refiere a si las estadísticas de la serie temporal, como la media y la varianza, calculadas a partir de una única realización, son representativas de las estadísticas del proceso en su totalidad. En otras palabras, un proceso es ergódico si el promedio de las muestras tomadas en un intervalo de tiempo largo es igual al promedio estadístico global de todo el proceso.</p>
+<h3 id="estacionaridad-y-ergodicidad">Estacionaridad y Ergodicidad</h3>
+<p>Para que un proceso sea ergódico, primero debe ser estacionario en sentido amplio, ya que las propiedades estadísticas (como la media y la varianza) deben ser constantes a lo largo del tiempo. Como se mencionó anteriormente, durante el intervalo nocturno (de 0 a 359 minutos y de 1080 a 1400 minutos), la serie temporal cumple con las condiciones de estacionaridad en sentido amplio, lo que sugiere que los datos pueden ser ergódicos en este periodo.</p>
+<p>Sin embargo, durante el intervalo diurno (de 360 a 1079 minutos), no se cumplen las condiciones de estacionaridad en sentido amplio, por lo que los datos no pueden considerarse ergódicos durante este período.</p>
+<h3 id="promedio-temporal-y-promedio-estadistico">Promedio Temporal y Promedio Estadístico</h3>
+<p>Para verificar la ergodicidad en el intervalo nocturno, se comparó el promedio temporal de la muestra (obtenido a partir de las observaciones durante la noche) con el promedio estadístico global. Si ambos promedios son similares, se puede concluir que los datos son ergódicos.</p>
+<p>Se utilizó una función muestra para calcular los valores de la muestra a lo largo del tiempo y graficarlos. El gráfico resultante se muestra a continuación:</p>
+<p><center>
+<img alt="Función Muestra" src="../img/funcion_muestra.png" />
+</center></p>
+<p>Los resultados obtenidos son los siguientes:</p>
+<ul>
+<li><strong>Promedio estadístico (global)</strong>: 0.0054</li>
+<li><strong>Promedio temporal de la muestra</strong>: 0.0050</li>
+</ul>
+<p>Dado que el promedio temporal de la muestra es muy cercano al promedio estadístico global, podemos concluir que <strong>los datos son ergódicos</strong> en el intervalo nocturno.</p>
+<h2 id="conclusion-de-la-estacionaridad-y-ergodicidad">Conclusión de la Estacionaridad y Ergodicidad</h2>
+<p>Con base a los resultados obtenidos de correlación, covarianza y varianza en ventanas de 40 minutos, se concluye lo siguiente:</p>
+<h3 id="estacionaridad">Estacionaridad</h3>
+<p>Durante el intervalo nocturno (de 0 a 359 minutos y de 1080 a 1400 minutos), la serie temporal muestra características claras de estacionaridad en sentido amplio. Las propiedades estadísticas como el promedio, la varianza y la covarianza se mantienen constantes a lo largo del tiempo, sin fluctuaciones significativas. Esto se observa en la correlación y la covarianza, que no presentan cambios drásticos, sugiriendo que durante la noche la serie temporal cumple con las condiciones de estacionaridad en sentido amplio.</p>
+<p>Sin embargo, durante el intervalo diurno (de 360 a 1079 minutos), aunque las fluctuaciones siguen una distribución normal, no se cumple con la estacionaridad en sentido amplio. A pesar de la forma normal de las fluctuaciones, las propiedades estadísticas como el promedio y la covarianza no permanecen constantes, lo que impide que se considere estacionaria en sentido amplio en este periodo. Las variaciones diurnas son predecibles de manera estocástica, pero la falta de constancia en la varianza y la covarianza impide que se considere estacionaria en sentido amplio.</p>
+<h3 id="ergodicidad_1">Ergodicidad</h3>
+<p>Para que los datos sean ergódicos, deben ser primero estacionarios en sentido amplio. En este sentido, durante el intervalo nocturno, los datos cumplen con la estacionaridad en sentido amplio, lo que permite que se cumpla la ergodicidad. Al comparar el promedio temporal con el promedio estadístico, se observa una alta coincidencia, lo que confirma que los datos son ergódicos durante la noche.</p>
+<p>Por el contrario, en el intervalo diurno, los datos no son ergódicos debido a la falta de estacionaridad en sentido amplio, lo que impide que las estadísticas calculadas a partir de una única realización sean representativas del proceso completo.</p>
+<h3 id="conclusion-final">Conclusión Final</h3>
+<ul>
+<li><strong>Estacionaridad</strong>: La serie temporal es estacionaria en sentido amplio solo durante el intervalo nocturno. En el periodo diurno, aunque las fluctuaciones siguen una distribución normal, no se cumplen las condiciones de estacionaridad en sentido amplio.</li>
+<li><strong>Ergodicidad</strong>: Los datos son ergódicos durante el intervalo nocturno, ya que cumplen con la estacionaridad en sentido amplio. Durante el intervalo diurno, no son ergódicos debido a la falta de estacionaridad en sentido amplio.</li>
+</ul>
+<p>En resumen, la estacionaridad en sentido amplio y la ergodicidad se cumplen solo durante el periodo nocturno, mientras que en el periodo diurno no se cumplen debido a las fluctuaciones no estacionarias, a pesar de que las fluctuaciones siguen una distribución normal.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "content.tooltips", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

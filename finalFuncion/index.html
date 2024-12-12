@@ -1,0 +1,710 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../finalObtencionDatos/">
+      
+      
+        <link rel="next" href="../Estacionaridad_ergodicidad/">
+      
+      
+      <link rel="icon" href="../img/plot.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Final:PDF - Proyecto de Programación de Modelos Probabilísticos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reporte-final-obtencion-de-funcion-de-densidad-de-probabilidad" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Proyecto de Programación de Modelos Probabilísticos" class="md-header__button md-logo" aria-label="Proyecto de Programación de Modelos Probabilísticos" data-md-component="logo">
+      
+  <img src="../img/plot.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto de Programación de Modelos Probabilísticos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Final:PDF
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../avanceModelos/" class="md-tabs__link">
+        
+  
+    
+  
+  Avance:Modelos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../avanceMomentos/" class="md-tabs__link">
+        
+  
+    
+  
+  Avance:Momentos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../finalObtencionDatos/" class="md-tabs__link">
+        
+  
+    
+  
+  Final:Obtención de datos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Final:PDF
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Estacionaridad_ergodicidad/" class="md-tabs__link">
+        
+  
+    
+  
+  Final:Estacionaridad en Sentido Amplio y Ergodicidad
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Potencia/" class="md-tabs__link">
+        
+  
+    
+  
+  Final:Potencia Promedio
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Proyecto de Programación de Modelos Probabilísticos" class="md-nav__button md-logo" aria-label="Proyecto de Programación de Modelos Probabilísticos" data-md-component="logo">
+      
+  <img src="../img/plot.png" alt="logo">
+
+    </a>
+    Proyecto de Programación de Modelos Probabilísticos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avanceModelos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Avance:Modelos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avanceMomentos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Avance:Momentos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finalObtencionDatos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Final:Obtención de datos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Final:PDF
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Final:PDF
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#promedio-temporal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promedio temporal
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identificacion-de-distribucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identificación de distribución
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones-temporales-de-parametros-de-distribucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funciones temporales de parámetros de distribución
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcion-de-densidad-de-probabilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Función de densidad de probabilidad
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Estacionaridad_ergodicidad/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Final:Estacionaridad en Sentido Amplio y Ergodicidad
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Potencia/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Final:Potencia Promedio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="reporte-final-obtencion-de-funcion-de-densidad-de-probabilidad">Reporte final: Obtención de función de densidad de probabilidad</h1>
+<p>A partir de la recolección de datos realizada durante 24 horas, se puede determinar la función de densidad del proceso aleatorio al primero identificar la distribución de los datos, y luego obtener una función en el tiempo de sus parámetros. Según se indicó, la distribución del proceso no cambia con el tiempo (como es usual en procesos típicos), solo sus parámetros. Una vez se obtenga la función de densidad del proceso, se puede estudiar más profundamente.</p>
+<h2 id="promedio-temporal">Promedio temporal</h2>
+<p>Primeramente, se generó un gráfico de la variación del promedio de los datos en el tiempo. Para esto se obtuvo el promedio de los 100 datos obtenidos en cada instante de tiempo (cada minuto) y se graficó en función del minuto en que se tomaron los datos (con el minuto concordando con el timestamp registrado). Al realizar este proceso, se obtuvo la siguiente figura, donde se nota que el comportamiento de los datos cambia drásticamente a distintas horas del día. Más adelante se demuestra que esta diferencia se da entre los minutos donde el parámetro "sunlight" está activado o no.</p>
+<p><center>
+<img alt="Promedio en función del tiempo" src="../img/promedio_tiempo.png" /></p>
+<p></center></p>
+<h2 id="identificacion-de-distribucion">Identificación de distribución</h2>
+<p>Para identificar el tipo de distribución que mejor describe a los datos en su totalidad, se emplea la función <code>get.best()</code> del paquete <code>Fitter</code>, la cual ajusta los datos a un conjunto de distribuciones distintas y determina cual posee el menor error (y por ende es la mejor). Para realizar correctamente esta prueba se debe aplicar a los datos obtenidos en un mismo instante de tiempo, es decir se hace el ajuste para los 100 datos de un mismo timestamp. Para ser robustos y asegurarse que la distribución empleada es la más representativa del proceso, se utilizó la función <code>obtenerMejorFit</code> (elaborada en el archivo <code>finalPDF.py</code>) que obtiene el mejor ajuste de cada instante de tiempo disponible y los cuenta según mayor frecuencia.  <strong>Nota: Para correr esta función se debe correr src/finalPDF.py directamente, pero es bastante extensa, para verificar los datos se recomienda ver el archivo de memoria de dicha función <a href="../misc/resultadosPruebasFitting.txt">resultadosPruebasFitting</a></strong></p>
+<p>Ajustando con las 6 distribuciones indicadas para este proyecto: exponencial, gompertz, levy, logistic, normal y rayleigh. Se obtuvieron los siguientes resultados:</p>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Distribución</th>
+<th style="text-align: center;">Contador general</th>
+<th style="text-align: center;">Contador de día</th>
+<th style="text-align: center;">Contador de noche</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Normal</td>
+<td style="text-align: center;">721</td>
+<td style="text-align: center;">360</td>
+<td style="text-align: center;">361</td>
+</tr>
+<tr>
+<td style="text-align: center;">Logistic</td>
+<td style="text-align: center;">497</td>
+<td style="text-align: center;">255</td>
+<td style="text-align: center;">242</td>
+</tr>
+<tr>
+<td style="text-align: center;">Gompertz</td>
+<td style="text-align: center;">184</td>
+<td style="text-align: center;">88</td>
+<td style="text-align: center;">96</td>
+</tr>
+<tr>
+<td style="text-align: center;">Rayleigh</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">19</td>
+</tr>
+<tr>
+<td style="text-align: center;">Levy</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;">Exponencial</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<p>De esta prueba se puede identificar que la distribución normal fue la más concurrente, sin presentar diferencias evidentes entre su frecuencia durante el día o la noche. Esto indica que las diferencias de tiempo no afectaron esta medida, y que en la grán mayoría de casos se dieron distribuciones normales o logistic. La diferencia entre la frecuencia de distribución normal y de logistic no es muy elevada, pero aún así se asume que la distribución es normal porque se da una diferencia de 224 casos entre estas. Por esto, se concluye que la distribución del proceso aleatorio es <strong>normal</strong>.</p>
+<h2 id="funciones-temporales-de-parametros-de-distribucion">Funciones temporales de parámetros de distribución</h2>
+<p>Una vez se identificó que la distribución estadística del proceso es normal, se debe pasar a identificar una función del tiempo para sus dos parámetros variantes, siendo la media (<span class="arithmatex">\(\mu\)</span>) y la desviación estándar (<span class="arithmatex">\(\sigma\)</span>). Estas se pueden obtener para un mismo instante de tiempo al usar la función <code>norm.fit</code> de scipy.stats, y se aplica este método para cada instante de tiempo disponible. Los resultados de estos ajustes se muestran en la siguiente figura:</p>
+<p><center>
+<img alt="Parámetros en función del tiempo" src="../img/parametros_tiempo.png" />
+</center></p>
+<p>En la figura se marcan los límites entre día y noche a partir de las líneas grises punteadas, donde el intervalo de tiempo entre el minuto 360 y el minuto 1079 corresponde al intervalo con sunlight puesto en <code>True</code>. Se puede nuevamente notar el comportamiento muy distinto entre los parámetros según si se encuentran en este intervalo o no, y al ser tan diferentes se procede a analizar de forma separada. Para las secciones de noche se nota que los valores se mantienen relativamente constantes en los valores de 1 y 0 para <span class="arithmatex">\(\sigma\)</span> y <span class="arithmatex">\(\mu\)</span> respectivamente, por lo que se pueden describir como constantes en este intervalo. Por otro lado, en el intervalo de día se muestra una variación de forma parabólica en ambas, por lo que se realizan ajustes polinómicos de grado 2 en ambas. Al realizar los ajustes se obtienen las siguientes funciones:</p>
+<div class="arithmatex">\[
+\begin{cases}
+    \mu(t) = -4.671218 \cdot 10^{-5}t^2 + 0.067239t - 18.176150\\
+    \sigma(t) = -1.520736 \cdot 10^{-5}t^2 +  0.021894t - 4.915082
+\end{cases}
+\]</div>
+<p>Estos ajustes se graficaron en la figura mostrada anteriormente, donde se puede notar que se acoplan correctamente a los datos, indicando que son válidos. Se puede conseguir la función de densidad para día de esta forma:</p>
+<div class="arithmatex">\[
+f(x_{\text{día}},t)= \frac{1}{\sqrt{2\pi (-1.520736 \cdot 10^{-5}t^2 +  0.021894t - 4.915082)^2}} e^{-\frac{(x - -4.671218 \cdot 10^{-5}t^2 + 0.067239t - 18.176150)^2}{2(-1.520736 \cdot 10^{-5}t^2 +  0.021894t - 4.915082)^2}}
+\]</div>
+<h2 id="funcion-de-densidad-de-probabilidad">Función de densidad de probabilidad</h2>
+<p>Con esta información, se puede armar la forma general de la función de densidad de probabilidad para este proceso aleatorio, de la siguiente forma, donde x representa la variable aleatoria y t es el tiempo en <strong>minutos</strong> con dominio 0 &lt; t &lt; 1440 mins:</p>
+<div class="arithmatex">\[
+f(x,t) = 
+\begin{cases}
+\frac{1}{\sqrt{2\pi \sigma(t)^2}} e^{-\frac{(x - \mu(t))^2}{2\sigma(t)^2}},\quad 360 &lt; t &lt; 1079 \text{ mins} \\
+\frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}},\quad \text{en otro caso}
+\end{cases}
+,\quad -\infty &lt; x &lt; \infty
+\]</div>
+<p>Se puede visualizar esta PDF en el siguiente gráfico 3D, evaluado en todo el dominio de tiempo establecido y en un rango reducido de x (donde se aprecia la mayoría de la amplitud no 0 de la PDF). En esta se puede notar que el cambio entre día y noche es consistente (puesto que en los puntos límites las curvas de estas secciones son muy cercanas) y se muestra el cambio durante el día.</p>
+<p><center>
+<img alt="pdf3D" src="../img/pdf3D.png" />
+</center></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "content.tooltips", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

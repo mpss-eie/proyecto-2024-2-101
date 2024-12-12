@@ -1,0 +1,750 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../avanceModelos/">
+      
+      
+        <link rel="next" href="../finalObtencionDatos/">
+      
+      
+      <link rel="icon" href="../img/plot.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+    
+    
+      
+        <title>Avance:Momentos - Proyecto de Programación de Modelos Probabilísticos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#avance-del-proyecto-analisis-de-momentos-estadisticos" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Proyecto de Programación de Modelos Probabilísticos" class="md-header__button md-logo" aria-label="Proyecto de Programación de Modelos Probabilísticos" data-md-component="logo">
+      
+  <img src="../img/plot.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Proyecto de Programación de Modelos Probabilísticos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Avance:Momentos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../avanceModelos/" class="md-tabs__link">
+        
+  
+    
+  
+  Avance:Modelos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Avance:Momentos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../finalObtencionDatos/" class="md-tabs__link">
+        
+  
+    
+  
+  Final:Obtención de datos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../finalFuncion/" class="md-tabs__link">
+        
+  
+    
+  
+  Final:PDF
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Estacionaridad_ergodicidad/" class="md-tabs__link">
+        
+  
+    
+  
+  Final:Estacionaridad en Sentido Amplio y Ergodicidad
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Potencia/" class="md-tabs__link">
+        
+  
+    
+  
+  Final:Potencia Promedio
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Proyecto de Programación de Modelos Probabilísticos" class="md-nav__button md-logo" aria-label="Proyecto de Programación de Modelos Probabilísticos" data-md-component="logo">
+      
+  <img src="../img/plot.png" alt="logo">
+
+    </a>
+    Proyecto de Programación de Modelos Probabilísticos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avanceModelos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Avance:Modelos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Avance:Momentos
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Avance:Momentos
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#momentos-estadisticos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Momentos Estadísticos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Momentos Estadísticos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#momentos-de-variable_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Momentos de variable_1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Momentos de variable_1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graficos-de-variable_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gráficos de variable_1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#momentos-de-variable_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Momentos de variable_2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graficos-de-variable_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gráficos de variable_2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finalObtencionDatos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Final:Obtención de datos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finalFuncion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Final:PDF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Estacionaridad_ergodicidad/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Final:Estacionaridad en Sentido Amplio y Ergodicidad
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Potencia/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Final:Potencia Promedio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="avance-del-proyecto-analisis-de-momentos-estadisticos">Avance del Proyecto: Análisis de momentos estadísticos</h1>
+<h2 id="momentos-estadisticos">Momentos Estadísticos</h2>
+<p>Los momentos estadísticos son medidas que describen diferentes aspectos de la distribución de un conjunto de datos. A continuación, se presentan los momentos calculados para las variables <code>variable_1</code> y <code>variable_2</code>.</p>
+<ol>
+<li><strong>Media</strong>: La media es el promedio aritmético de los datos, que indica la tendencia central.</li>
+<li><strong>Varianza</strong>: La varianza mide la dispersión de los datos respecto a la media. Se calcula como el promedio de las diferencias al cuadrado entre cada dato y la media.</li>
+<li><strong>Desviación Estándar</strong>: La desviación estándar es la raíz cuadrada de la varianza, ofreciendo una medida de la dispersión en las mismas unidades que los datos.</li>
+<li><strong>Asimetría (Skewness)</strong>: La asimetría mide la simetría de la distribución. Un valor positivo indica que la cola derecha es más larga, mientras que un valor negativo indica una cola izquierda más larga.</li>
+<li><strong>Curtosis</strong>: La curtosis mide la "altura" y "ancho" de la distribución. La función <code>scipy.stats.kurtosis()</code> calcula el exceso de curtosis, que es la diferencia entre la curtosis de los datos y 3 (la kurtosis de una distribución normal). Se clasifica de la siguiente manera:<ul>
+<li><strong>Leptocúrtica</strong>: Exceso de curtosis mayor que 0 (curtosis &gt; 3), indicando colas más pesadas y un pico más alto en comparación con la normal, lo que sugiere más valores extremos.</li>
+<li><strong>Mesocúrtica</strong>: Exceso de curtosis igual a 0 (curtosis = 3), lo que sugiere que la distribución tiene colas y un pico similares a una distribución normal.</li>
+<li><strong>Platicúrtica</strong>: Exceso de curtosis menor que 0 (curtosis &lt; 3), indicando colas más ligeras y un pico más plano, lo que sugiere menos valores extremos.</li>
+<li><strong>Nota</strong>: En el contexto del cálculo de momentos estadísticos, se toma como referencia el valor cero porque se utiliza la librería <strong>SciPy</strong>, que considera la curtosis de una distribución normal como igual a cero. Esto implica que una distribución con un exceso de curtosis positivo indica colas más pesadas que la normal, mientras que un exceso negativo indica colas más ligeras.</li>
+</ul>
+</li>
+</ol>
+<h4 id="momentos-de-variable_1">Momentos de <code>variable_1</code></h4>
+<ol>
+<li>
+<p><strong>Media</strong>: </p>
+<ul>
+<li><strong>Valor</strong>: -0.00034</li>
+<li><strong>Interpretación</strong>: La media muy cercana a cero sugiere que los datos están distribuidos alrededor del origen, lo que indica que no hay una tendencia significativa en ninguna dirección.</li>
+</ul>
+</li>
+<li>
+<p><strong>Varianza</strong>: </p>
+<ul>
+<li><strong>Valor</strong>: 1.6720</li>
+<li><strong>Interpretación</strong>: Una varianza relativamente alta indica que los datos están bastante dispersos alrededor de la media. Esto sugiere que hay una considerable variabilidad en los datos.</li>
+</ul>
+</li>
+<li>
+<p><strong>Desviación Estándar</strong>: </p>
+<ul>
+<li><strong>Valor</strong>: 1.2931</li>
+<li><strong>Interpretación</strong>: La desviación estándar es una medida de dispersión que indica que, en promedio, los datos se desvían en aproximadamente 1.29 unidades de la media.</li>
+</ul>
+</li>
+<li>
+<p><strong>Asimetría (Skewness)</strong>: </p>
+<ul>
+<li><strong>Valor</strong>: -0.0084</li>
+<li><strong>Interpretación</strong>: Un valor de asimetría cercano a cero sugiere que la distribución es aproximadamente simétrica, con colas de igual longitud a ambos lados de la media.</li>
+</ul>
+</li>
+<li>
+<p><strong>Curtosis</strong>: </p>
+<ul>
+<li><strong>Valor</strong>: 4.6998</li>
+<li><strong>Interpretación</strong>: Un valor de curtosis mayor que 0 (por usar la función) indica que la distribución es leptocúrtica, con colas más pesadas y un pico más alto que una distribución normal. Esto puede implicar que hay más datos extremos (outliers).</li>
+</ul>
+</li>
+</ol>
+<p>Los siguientes gráficos ilustran la distribución de <code>variable_1</code>, con líneas que indican la media, las desviaciones estándar, y los momentos estadísticos calculados.</p>
+<h5 id="graficos-de-variable_1">Gráficos de <code>variable_1</code></h5>
+<ul>
+<li>
+<p><strong>Histograma de variable_1</strong>:
+  <img alt="Histograma de variable_1" src="../img/histograma_variable_1_con_momentos.png" /></p>
+</li>
+<li>
+<p><strong>Ajuste de la distribución normal a variable_1</strong>:
+  <img alt="Ajuste de variable_1" src="../img/ajuste_variable_1_con_momentos.png" /></p>
+</li>
+</ul>
+<h4 id="momentos-de-variable_2">Momentos de <code>variable_2</code></h4>
+<ol>
+<li>
+<p><strong>Media</strong>: </p>
+<ul>
+<li><strong>Valor</strong>: 2.6720</li>
+<li><strong>Interpretación</strong>: La media sugiere que los datos están distribuidos en torno a un valor positivo, lo que podría indicar un sesgo hacia valores más altos.</li>
+</ul>
+</li>
+<li>
+<p><strong>Varianza</strong>: </p>
+<ul>
+<li><strong>Valor</strong>: 2.7955</li>
+<li><strong>Interpretación</strong>: Una varianza más alta en comparación con <code>variable_1</code> sugiere una mayor dispersión en los datos.</li>
+</ul>
+</li>
+<li>
+<p><strong>Desviación Estándar</strong>: </p>
+<ul>
+<li><strong>Valor</strong>: 1.6719</li>
+<li><strong>Interpretación</strong>: Esto indica que los datos se desvían en promedio aproximadamente 1.67 unidades de la media.</li>
+</ul>
+</li>
+<li>
+<p><strong>Asimetría (Skewness)</strong>: </p>
+<ul>
+<li><strong>Valor</strong>: 2.0</li>
+<li><strong>Interpretación</strong>: Un valor de asimetría positivo indica que la distribución tiene una cola derecha más larga, sugiriendo que hay más valores extremos en la parte alta de la distribución.</li>
+</ul>
+</li>
+<li>
+<p><strong>Curtosis</strong>: </p>
+<ul>
+<li><strong>Valor</strong>: 6.0</li>
+<li><strong>Interpretación</strong>: Este valor alto sugiere que la distribución es leptocúrtica, con colas aún más pesadas que las de <code>variable_1</code>, lo que podría indicar la presencia de muchos outliers.</li>
+</ul>
+</li>
+</ol>
+<p>Los siguientes gráficos muestran la distribución de <code>variable_2</code>, con líneas que indican la media, las desviaciones estándar, y los momentos estadísticos calculados.</p>
+<h3 id="graficos-de-variable_2">Gráficos de <code>variable_2</code></h3>
+<p><strong>Histograma de variable_2</strong>:
+  <img alt="Histograma de variable_2" src="../img/histograma_variable_2_con_momentos.png" /></p>
+<p><strong>Ajuste de la distribución exponencial a variable_2</strong>:
+  <img alt="Ajuste de variable_2" src="../img/ajuste_variable_2_con_momentos.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "content.tooltips", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
